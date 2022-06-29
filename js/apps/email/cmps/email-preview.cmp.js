@@ -5,7 +5,7 @@ export default {
     template:`
     <section>
         <section  class="email-preview" @click="checkStatus(email.id)">
-            <p>From : {{email.to}}</p>
+            <p>From : {{email.from}}</p>
             <p>Subject: {{email.subject}}</p>
             <p>sent at: {{email.sentAt}}</p>
             <p>isRead: {{isRead}}</p>

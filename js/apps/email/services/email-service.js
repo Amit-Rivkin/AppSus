@@ -8,6 +8,8 @@ export const emailService = {
   remove,
   save,
   get,
+  getEmptyEmail,
+  getLoggedUserEmail,
 }
 
 const loggedinUser = {
@@ -63,7 +65,23 @@ function _createEmail() {
     body: "Would love to catch up sometimes",
     isRead: false,
     sentAt: 1551133930594,
-    to: "momo@momo.com",
+    from: "momo@momo.com",
+    to:'ron@appsus.com'
   }
 }
 
+function getEmptyEmail(){
+    return {
+        id:'',
+        subject: "",
+        body: "",
+        isRead: true,
+        sentAt: Date.now(),
+        to: "",
+        from:"ron@appsus.com"
+      }
+}
+
+function getLoggedUserEmail(){
+    return loggedinUser.email
+}
