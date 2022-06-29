@@ -5,3 +5,11 @@
 .email-half{
     background-color: green;
 }
+
+.compose{
+    background-color: lightcoral;
+}
+
+.compose textarea{
+    resize: none;
+}

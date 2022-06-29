@@ -8,6 +8,10 @@ export const emailService = {
   remove,
   save,
   get,
+  getEmptyEmail,
+  getLoggedUserEmail,
+  getFilter,
+  setFilter
 }
 
 const loggedinUser = {
@@ -17,10 +21,10 @@ const loggedinUser = {
 
 const criteria = {
   status: "inbox", //'inbox/sent/trash/draft',
-  txt: "puki", // no need to support complex text search
-  isRead: true, // (optional property, if missing: show all)
-  isStared: true, // (optional property, if missing: show all)
-  lables: ["important", "romantic"], // has any of the labels
+  txt: "", // no need to support complex text search
+  isRead: null, // (optional property, if missing: show all)
+  //isStared: true, // (optional property, if missing: show all)
+  //lables: ["important", "romantic"], // has any of the labels
 }
 
 
@@ -63,7 +67,31 @@ function _createEmail() {
     body: "Would love to catch up sometimes",
     isRead: false,
     sentAt: 1551133930594,
-    to: "momo@momo.com",
+    from: "momo@momo.com",
+    to:'ron@appsus.com'
   }
 }
 
+function getEmptyEmail(){
+    return {
+        id:'',
+        subject: "",
+        body: "",
+        isRead: true,
+        sentAt: Date.now(),
+        to: "",
+        from:"ron@appsus.com"
+      }
+}
+
+function getLoggedUserEmail(){
+    return loggedinUser.email
+}
+
+function getFilter(){
+    return criteria
+}
+
+function setFilter(type, value){
+    criteria[type] = value
+}
