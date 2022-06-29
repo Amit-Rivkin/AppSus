@@ -68,7 +68,8 @@ function _createEmail() {
     isRead: false,
     sentAt: 1551133930594,
     from: "momo@momo.com",
-    to:'ron@appsus.com'
+    to:'ron@appsus.com',
+    inTrash: false,
   }
 }
 
@@ -80,7 +81,8 @@ function getEmptyEmail(){
         isRead: true,
         sentAt: Date.now(),
         to: "",
-        from:"ron@appsus.com"
+        from:"ron@appsus.com",
+        inTrash: false,
       }
 }
 

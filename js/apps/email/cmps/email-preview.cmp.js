@@ -34,7 +34,7 @@ export default {
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)
-                    this.$emit('readMsg')
+                    this.$emit('readMsg', id)
                 })
 
             }
@@ -42,10 +42,18 @@ export default {
             
         },
         deleteMsg(id){
-            emailService.remove(id).then(()=>{
+            if(!this.email.inTrash){
+                this.email.inTrash = true
+                this.email.isRead = true
+                this.$emit('deleteMsg', {type:'update', id:this.email.id})
 
-                this.$emit('deleteMsg', id)
-            })
+            }else{
+
+                emailService.remove(id).then(()=>{
+    
+                    this.$emit('deleteMsg', {type:'delete', id:this.email.id})
+                })
+            }
         }
        
     },
