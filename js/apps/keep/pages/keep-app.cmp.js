@@ -7,14 +7,16 @@ import keepFilter from '../cmps/keep-filter.cmp.js'
 
 export default {
     template: `
-    <section v-if="notes">
         <h3>keep page</h3>
         <keep-filter  @addCmp="reRender"/>
-        <div v-for="cmp in notes">
+    <section v-if="notes" class="notes-area">
+        <div v-for="cmp in notes" class="note-card" :style="{ backgroundColor: color}">
             <button @click="deleteNote(cmp.id)">X</button>
             <button @click="pinNote(cmp.id)">📌</button>
-            <component :is="cmp.type"
-                :info="cmp.info">
+            <input type="color" :style="{ color: color}" v-model="color">
+            <!-- <button @click="duplicateNote(cmp.id)">2️⃣</button> -->
+            <component @todoDone="reRender" :is="cmp.type"
+                :note="cmp">
             </component>
 
        </div>
@@ -23,6 +25,7 @@ export default {
     data() {
         return {
             notes: null,
+            color : '#rrggbb'
         };
     },
     created() {
@@ -48,7 +51,6 @@ export default {
                 })
         },
         deleteNote(id) {
-            console.log(id);
             NotesService.remove(id)
                 .then(() => {
                     const idx = this.notes.findIndex((note) => note.id === id)
@@ -58,13 +60,19 @@ export default {
         pinNote(id) {
             console.log(id);
             NotesService.get(id)
-                .then(() => {
+            .then(() => {
+                console.log(id);
                     const idx = this.notes.findIndex((note) => note.id === id)
                     this.notes.unshift(this.notes.splice(idx, 1)[0]);
-                   
+                    NotesService.save(this.note)
                 })
-
-        }
+        },
+        // duplicateNote(){
+        //     NotesService.get(id)
+        //     .then(() => {
+        //       this.notes.findIndex((note) => note.id === id) .reduce(function (res, current, index, array) {
+        //         return res.concat([current, current]);
+        //     }, []);}
 
     },
     computed: {},

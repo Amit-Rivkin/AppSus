@@ -1,18 +1,16 @@
+
+
 export default {
-    props: ['info'],
+    props: ['note'],
     template: `
           <section>
-              <textarea class="textArea" cols="30" rows="10" :style="{ backgroundColor: color}" >
-              {{info.txt}}
-              </textarea>
-                  <input type="color"   :style="{ color: color}" v-model="color">
-                  
-  
+              <textarea class="text-area" cols="30" rows="10" >
+              {{note.info.txt}}
+            </textarea>
           </section>
           `,
     data() {
       return {
-    color : 'aqua'
       }
     },
     methods: {
@@ -20,6 +18,6 @@ export default {
     
     },
     computed: {
-      }
+      },
     }
   

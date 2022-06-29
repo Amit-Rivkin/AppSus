@@ -1,0 +1,32 @@
+.note-card{
+    background-color: #36d5f440;
+    width: 250px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 50px;
+    padding: 24px 8px;
+    height: 200px;
+}
+.notes-area{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+img{
+    width: 180px;
+    height: 100px;
+}
+
+.text-area{
+   /* text-align: right; */
+    background-color: transparent;
+    border: transparent;
+    resize: none;
+}
+
+.img-container{
+height: 100px;
+}
+
+.done{
+    text-decoration: line-through;
+}

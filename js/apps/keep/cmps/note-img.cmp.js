@@ -1,12 +1,13 @@
 
 export default {
-    props: ['info'],
+    props: ['note'],
     template: `
         <section>
-            <div>
-            <h1>{{info.title}}</h1>  
-                <img :src="info.url">
+            <h1>{{note.info.title}}</h1>   
+            <div class="img-container">
+                <img :src= "note.info.url" >
             </div>
+
         </section>
         `,
     data() {
@@ -18,5 +19,7 @@ export default {
     
     },
     computed: {
-    }
+
+    },
+    
 }

@@ -26,7 +26,6 @@ function query() {
 }
 
 function remove(noteId) {
-    // return Promise.reject('Big Error Badd')
     return storageService.remove(NOTES_KEY, noteId)
 }
 
@@ -38,10 +37,6 @@ function save(note) {
     if (note.id) return storageService.put(NOTES_KEY, note)
     else return storageService.post(NOTES_KEY, note)
 }
-
-// function saveMany(notes){
-//    return storageService.put(NOTES_KEY, notes)
-// }
 
 function _crateNotes(){
 return query()
@@ -61,7 +56,7 @@ function _crateNote(){
         {
          id: "n101",
          type: "noteTxt",
-         isPinned: true,
+         isPinned: false,
          info: {
          txt: "Fullstack Me Baby!"
          }
@@ -69,8 +64,9 @@ function _crateNote(){
         {
          id: "n102",
          type: "noteImg",
+         isPinned: false,
          info: {
-         url: "https://www.imgacademy.com/about-img-academy",
+         url: "../../../imgs/1.jpg",
          title: "Bobi and Me"
          },
          style: {
@@ -80,19 +76,21 @@ function _crateNote(){
         {
          id: "n103",
          type: "noteTodos",
+         isPinned: false,
          info: {
          label: "Get my stuff together",
          todos: [
-         { txt: "Driving liscence", doneAt: null, isDone:false },
-         { txt: "Coding power", doneAt: 187111111, isDone:false }
+         { txt: "Driving liscence", doneAt: null,},
+         { txt: "Coding power", doneAt: null,}
          ]
          }
         },
         {
         id: "n104",
         type: "noteVideo",
+        isPinned: false,
         info: {
-            url: "https://www.youtube.com/watch?v=zWh3CShX_do",
+            url: "../../../video/1.mp4",
             title: "Get video here",
             }
         }
@@ -123,6 +121,7 @@ function _crateNote(){
         return {
             id: "",
             type: "noteImg",
+            isPinned: false,
             info: {
             url: "",
             title: "Bobi and Me"
@@ -137,10 +136,11 @@ function _crateNote(){
         return {
             id: "",
             type: "noteTodos",
+            isPinned: false,
             info: {
             label: "Get my stuff together",
             todos: [
-            { txt: "", doneAt: null,isDone:false },            ]
+            { txt: "", doneAt: null },            ]
             }
         }
     }
@@ -149,6 +149,7 @@ function _crateNote(){
         return {
             id: "",
             type: "noteVideo",
+            isPinned: false,
             info: {
                 url: "",
                 title: "Get video here",

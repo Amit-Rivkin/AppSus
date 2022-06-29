@@ -4,6 +4,7 @@ export default {
             <div class="logo">
                 <h3>AppSus</h3>
             </div>
+            <!-- <button  @click="toggleHamborger" class="hamburger-btn">🎞️</button> -->
             <nav class="nav-bar">
                 <router-link to="/">Home</router-link>|
                 <!-- <router-link to="/book">Books</router-link>| -->

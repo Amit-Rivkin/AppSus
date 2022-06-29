@@ -1,25 +1,46 @@
 
+import { NotesService } from "../services/keep-service.js"
+
+
 
 export default {
-props:["info"],
-template:`
-<h1>{{info.label}}</h1>
-<section>
-    <ul>
-        <li v-for="todo in info.todos" >
-            <h1 @click="toggleTodo">{{todo.txt}}</h1>
+    props: ['note'],
+    template: `<article class="note-container">
+      <h2>{{note.info.label}}</h2>
+      <ul>
+        <li v-for="(todo,idx) in note.info.todos">
+          <h1 :style="setMarked(todo)"
+          @click="markTodo(todo)">{{todo.txt}}</h1>
+          <button @click="removeTodo(idx)">X</button>
         </li>
-    </ul>
-
-</section>
-`,
-methods:{
-    toggleTodo(){
-    const todo = this.info.find(todo => todo.id === todoId)
-    todo.isDone = !todo.isDone
-    }
-},
-
-components: {
-},
-}
+      </ul>
+      <input type="text" placeholder="Enter your todo here">
+    </article>
+    `,
+    data() {
+      return {
+      
+      };
+    },
+    methods: {
+      markTodo(todo) {
+        todo.doneAt = todo.doneAt ? null : Date.now()
+        NotesService.save(this.note)
+      },
+      removeTodo(todoIdx) {
+        console.log(todoIdx)
+        this.note.info.todos.splice(todoIdx, 1)
+        NotesService.save(this.note)
+      },
+      setMarked(todo) {
+        return {
+          cursor: 'pointer',
+          textDecoration: todo.doneAt ? 'line-through' : 'none'
+        }
+      }
+    },
+    computed: {
+    },
+  
+  };
+  

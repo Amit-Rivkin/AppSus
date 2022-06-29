@@ -34,7 +34,7 @@ export default {
             if (this.type === 'noteImg') {
                 newCmp = NotesService.getEmptyImg()
                 //fill the object with the data
-                newCmp.url = this.note
+                newCmp.info.url = this.note
             }
             if (this.type === 'noteTodos') {
                 newCmp = NotesService.getEmptyTodo()

@@ -1,1 +1,10 @@
-@import './apps/email/email.css' 
+@import './apps/email/email.css';
+@import './apps/keep/kepp.css' ;
+@import './parts/base.css';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+
+}
+
