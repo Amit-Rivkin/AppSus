@@ -11,11 +11,15 @@ export default {
         <keep-filter  @addCmp="reRender"/>
     <section v-if="notes" class="notes-area">
         <div v-for="cmp in notes" class="note-card" :style="{ backgroundColor: color}">
-            <button @click="deleteNote(cmp.id)">X</button>
-            <button @click="pinNote(cmp.id)">📌</button>
-            <input type="color" :style="{ color: color}" v-model="color">
+            <button class="note-tools pin" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="note-tools delete" @click="pinNote(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
+            <div class="change-color-container">
+                <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
+                <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color">
+            </div>
             <!-- <button @click="duplicateNote(cmp.id)">2️⃣</button> -->
-            <component @todoDone="reRender" :is="cmp.type"
+            <component class="note-container" @todoDone="reRender"
+                :is="cmp.type"
                 :note="cmp">
             </component>
 
@@ -25,7 +29,7 @@ export default {
     data() {
         return {
             notes: null,
-            color : '#rrggbb'
+            color: '#rrggbb'
         };
     },
     created() {
@@ -58,10 +62,8 @@ export default {
                 })
         },
         pinNote(id) {
-            console.log(id);
             NotesService.get(id)
-            .then(() => {
-                console.log(id);
+                .then(() => {
                     const idx = this.notes.findIndex((note) => note.id === id)
                     this.notes.unshift(this.notes.splice(idx, 1)[0]);
                     NotesService.save(this.note)

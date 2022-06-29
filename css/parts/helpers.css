@@ -1,0 +1,43 @@
+.flex {
+    display: flex;
+  }
+  
+  .flex.flex-column {
+    flex-direction: column;
+  }
+  
+  .flex.align-center {
+    align-items: center;
+  }
+  
+  .align-self-start {
+    align-self: flex-start;
+  }
+  .align-self-center {
+    align-self: center;
+  }
+  .align-self-end {
+    align-self: flex-end;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .flex.space-between {
+    justify-content: space-between;
+  }
+  
+  .flex.space-around {
+    justify-content: space-around;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }

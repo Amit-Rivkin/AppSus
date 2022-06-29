@@ -59,44 +59,114 @@ function _crateNote(){
          isPinned: false,
          info: {
          txt: "Fullstack Me Baby!"
-         }
-        },
+         },
+         style:{
+         backgroundColor: "#F5F5DC"
+        }
+    },
         {
          id: "n102",
          type: "noteImg",
          isPinned: false,
          info: {
-         url: "../../../imgs/1.jpg",
-         title: "Bobi and Me"
-         },
-         style: {
-         backgroundColor: "#00d"
-         }
+            url: "../../../imgs/1.jpg",
+            title: "Bobi and Me"
+        },
+        style: {
+         backgroundColor: "#F5F5DC"
+        }
         },
         {
          id: "n103",
          type: "noteTodos",
          isPinned: false,
          info: {
-         label: "Get my stuff together",
-         todos: [
+            label: "Get my stuff together",
+            todos: [
          { txt: "Driving liscence", doneAt: null,},
          { txt: "Coding power", doneAt: null,}
-         ]
-         }
-        },
-        {
+        ]
+         },
+         style:{
+            backgroundColor: "#F5F5DC"
+        }
+    },
+    {
         id: "n104",
         type: "noteVideo",
         isPinned: false,
         info: {
             url: "../../../video/1.mp4",
             title: "Get video here",
+            },
+            style:{
+                backgroundColor: "#F5F5DC"
             }
+        },
+    {
+        id: "n105",
+        type: "noteImg",
+        isPinned: false,
+        info: {
+           url: "../../../imgs/2.jpg",
+           title: "My sprint code"
+        },
+        style: {
+            backgroundColor: "#F5F5DC"
         }
-        ]
+    },
+    {
+        id: "n106",
+        type: "noteTxt",
+         isPinned: false,
+         info: {
+         txt: "Burn caloreis in this spirnt🥵!"
+        },
+        style:{
+            backgroundColor: "#F5F5DC"
+        }
+    },
+        {
+         id: "n107",
+         type: "noteTxt",
+         isPinned: false,
+         info: {
+            txt: "Coding is my life"
+        },
+        style:{
+            backgroundColor: "#F5F5DC"
+        }
+    },
+    {
+        id: "n108",
+        type: "noteImg",
+        isPinned: false,
+        info: {
+            url: "../../../imgs/3.jpg",
+            title: "Me during the spirnt"
+        },
+           style: {
+            backgroundColor: "#F5F5DC"
+           }
+           },
+           {
+            id: "n109",
+            type: "noteTodos",
+            isPinned: false,
+            info: {
+               label: "Get my stuff together",
+               todos: [
+            { txt: "Sleep", doneAt: null,},
+            { txt: "Eat", doneAt: null,}
+           ]
+            },
+            style:{
+               backgroundColor: "#F5F5DC"
+           }
+       },
+    ]
         return notes
-}
+    }
 
 
     // function getNextCarId(carId) {
@@ -114,7 +184,10 @@ function _crateNote(){
             isPinned: false,
             info: {
             txt: ''
-        }
+        },
+        style:{
+            backgroundColor: "#F5F5DC"
+           }
     }
 }
     function getEmptyImg() {
@@ -127,7 +200,7 @@ function _crateNote(){
             title: "Bobi and Me"
             },
             style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#F5F5DC"
             }
         }
     }
@@ -141,7 +214,10 @@ function _crateNote(){
             label: "Get my stuff together",
             todos: [
             { txt: "", doneAt: null },            ]
-            }
+            },
+            style:{
+                backgroundColor: "#F5F5DC"
+               }
         }
     }
 
@@ -153,7 +229,10 @@ function _crateNote(){
             info: {
                 url: "",
                 title: "Get video here",
-                }
+                },
+                style:{
+                    backgroundColor: "#F5F5DC"
+                   }
             }
 }
     
