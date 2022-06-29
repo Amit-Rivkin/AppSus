@@ -1,15 +1,13 @@
 import {emailService} from '../services/email-service.js'
 import emailList from '../cmps/email-list.cmp.js'
 import composeEmail from '../cmps/compose.cmp.js'
+import emailFilter from '../cmps/email-filter.cmp.js'
 export default{
     template: `
     <section class="email-app" v-if="emails">
        <h3>email page</h3>
        <h6>Unread Email: {{unread}}</h6>
-       <button @click="setDisplayFilter('inbox')">Inbox</button>
-       <button @click="setDisplayFilter('sent')">Sent</button>
-       <button @click="setDisplayFilter('trash')">Trash</button>
-       <button @click="setDisplayFilter('draft')">Draft</button>
+       <email-filter @filter-change="setDisplayFilter"/>
        <button @click="compose">Compose</button>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
@@ -32,7 +30,9 @@ export default{
             this.emails.forEach(eml=>{
                 if(!eml.isRead) this.unread++
             })
+
         })
+        this.filterBy = emailService.getFilter()
         
        },
        methods: {
@@ -54,17 +54,18 @@ export default{
             //add modal for successfully sending message
         },
         setDisplayFilter(filter){
-            this.filterBy.showType = filter
+            this.filterBy[filter.type] = filter.value
+            emailService.setFilter(filter.type, filter.value)
         }
        },
        computed: {
         emailsForDisplay() {
             var emails = this.emails
             if(!this.filterBy)return emails
-            if(this.filterBy.showType === "inbox") {
+            if(this.filterBy.status === "inbox") {
                 return emails.filter(email=> email.to === emailService.getLoggedUserEmail())
             }
-            if(this.filterBy.showType === "sent") {
+            if(this.filterBy.status === "sent") {
                 return emails.filter(email=> email.from === emailService.getLoggedUserEmail())
             }
         },
@@ -72,5 +73,7 @@ export default{
        components:{
         emailList,
         composeEmail,
+        emailFilter,
+
        }
    };

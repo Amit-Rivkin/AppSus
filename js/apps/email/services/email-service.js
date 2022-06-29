@@ -10,6 +10,8 @@ export const emailService = {
   get,
   getEmptyEmail,
   getLoggedUserEmail,
+  getFilter,
+  setFilter
 }
 
 const loggedinUser = {
@@ -19,10 +21,10 @@ const loggedinUser = {
 
 const criteria = {
   status: "inbox", //'inbox/sent/trash/draft',
-  txt: "puki", // no need to support complex text search
-  isRead: true, // (optional property, if missing: show all)
-  isStared: true, // (optional property, if missing: show all)
-  lables: ["important", "romantic"], // has any of the labels
+  txt: "", // no need to support complex text search
+  isRead: null, // (optional property, if missing: show all)
+  //isStared: true, // (optional property, if missing: show all)
+  //lables: ["important", "romantic"], // has any of the labels
 }
 
 
@@ -84,4 +86,12 @@ function getEmptyEmail(){
 
 function getLoggedUserEmail(){
     return loggedinUser.email
+}
+
+function getFilter(){
+    return criteria
+}
+
+function setFilter(type, value){
+    criteria[type] = value
 }
