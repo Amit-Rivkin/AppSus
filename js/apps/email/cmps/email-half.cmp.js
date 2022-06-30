@@ -6,7 +6,7 @@ export default {
             <button>star</button>
             <div>Subject {{email.subject}}</div>
             <div>{{email.from}}</div>
-            <p>text: {{email.body}}</p>
+            <p>{{email.body}}</p>
             <hr>
         </section>
 

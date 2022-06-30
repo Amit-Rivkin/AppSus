@@ -6,8 +6,8 @@ export default{
     template: `
        <h1>Unread Email: {{unread}}</h1>
        <button class="compose-btn" @click="compose"><i class="fa-solid fa-plus"></i> Compose</button>
+       <input class="search-input" type="text" v-model="search" placeholder="search in emails" @input="setDisplayFilter({type: 'txt',value:search})">
     <section class="email-app" v-if="emails">
- 
         <email-filter class="flex flex-column" @filter-change="setDisplayFilter"/>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
@@ -21,6 +21,7 @@ export default{
             },
             unread:0,
             isCompose:false,
+            search:'',
 
            };
        },
@@ -87,13 +88,14 @@ export default{
             if(!this.filterBy)return emails
             if(this.filterBy.isStared) emails = emails.filter(email=> email.isStar)
             //filter by text
-            if(this.filterBy.txt !== '') emails = emails.filter(email=> email.from.includes(this.filterBy.txt) || email.subject.includes(this.filterBy.txt) || email.body.includes(this.filterBy.txt))
+            if(this.filterBy.txt !== '') emails = emails.filter(email=> email.from.toLowerCase().includes(this.filterBy.txt.toLowerCase()) || email.subject.toLowerCase().includes(this.filterBy.txt.toLowerCase()) || email.body.toLowerCase().includes(this.filterBy.txt.toLowerCase()))
             //filter by read
             if(this.filterBy.isRead !== null){
                 if(this.filterBy.isRead) emails = emails.filter(email=> email.isRead)
                 else emails = emails.filter(email=> !email.isRead)
 
             }
+            console.log(emails)
             //filter by status
             if(this.filterBy.status === "inbox") {
                 return emails.filter(email=> email.to === emailService.getLoggedUserEmail() && !email.inTrash)

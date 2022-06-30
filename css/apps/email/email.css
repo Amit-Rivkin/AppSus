@@ -57,7 +57,18 @@
 }
 
 .search-input{
-    grid-area: "searchInput";
+    background-color:#FFFFFF;
+    border: 3px solid #71b8f7;
+    width:800px;
+    height:50px;
+    border-radius: 8px;
+}
+
+.search-input:focus{
+    outline: none;
+    background-color: rgb(241 243 244);
+    box-shadow: inset 0 0 0 1px black, 0 0 3px 1px #71b8f7; 
+
 }
 
 .compose-btn{
