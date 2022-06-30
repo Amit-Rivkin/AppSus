@@ -1,8 +1,8 @@
 import homePage from './general-pages/home-page-cmp.js'
 import emailPage  from './apps/email/pages/email-app.cmp.js'
 import keepPage  from './apps/keep/pages/keep-app.cmp.js'
-// import bookApp  from './views/book-app.cmp.js'
-// import bookDetails from './views/book-details.cmp.js'
+// import bookApp  from './apps/books/pages/book-app.cmp.js'
+// import bookDetails from './apps/books/pages/book-details.cmp.js'
 const routes = [
     {
         path: '/',
