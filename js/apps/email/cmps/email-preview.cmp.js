@@ -14,7 +14,7 @@ export default {
             </section> -->
             <div id="table">
                 <div class="tr" :style="{backgroundColor: readColor}">
-                    <div class="td">{{getStar}}</div>
+                    <div class="td"><span @click.stop="starMsg">{{getStar}}</span></div>
                     <div class="td">{{email.subject}}</div>
                     <div class="td">{{email.from}}</div>
                     <div class="td">{{email.sentAt}}</div>
@@ -22,8 +22,8 @@ export default {
                     <button class="delete-eml-btn" @Click="deleteMsg(email.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
-            <email-half v-if="shouldPreview" :email="email"/>
         </section>
+        <email-half v-if="shouldPreview" :email="email"/>
         <hr>
         </section>
     `,
@@ -32,6 +32,7 @@ export default {
             shouldPreview:false,
             isRead:this.email.isRead,
             readColor: null,
+            isStar: this.email.isStar
 
         }
     },
@@ -70,10 +71,15 @@ export default {
                 })
             }
         },
+        starMsg(){
+            this.isStar = !this.isStar
+            this.email.isStar = !this.email.isStar
+            emailService.save(this.email)
+        },
     },
     computed:{
         getStar(){
-            return this.email.isStar ? '★' : '☆'
+            return this.isStar ? '★' : '☆'
             
         }
        

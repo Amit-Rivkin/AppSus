@@ -9,6 +9,7 @@ export default {
         <button class="btn" @click="setDisplayFilter({type: 'status',value:'draft'})">Draft</button>
   
 
+            <button class="btn" @click="setDisplayFilter({type: 'isStared',value:true})">Show Stared<i class="fas fa-star"></i></button>
             <button class="btn" @click="setDisplayFilter({type: 'isRead',value:true})">Show Read</button>
             <button class="btn" @click="setDisplayFilter({type: 'isRead',value:false})">Show Unread</button>
             <button class="btn" @click="setDisplayFilter({type: 'isRead',value:null})">Show All</button>

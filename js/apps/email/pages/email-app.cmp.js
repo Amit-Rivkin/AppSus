@@ -74,6 +74,9 @@ export default{
                 
                 this.filterBy.status = "inbox" 
             }
+            if(filter.type !== "isStared"){
+                this.filterBy.isStared = false
+            }
             console.log("filterby", this.filterBy)
             emailService.setFilter(filter.type, filter.value)
         }
@@ -82,6 +85,7 @@ export default{
         emailsForDisplay() {
             var emails = this.emails
             if(!this.filterBy)return emails
+            if(this.filterBy.isStared) emails = emails.filter(email=> email.isStar)
             //filter by text
             if(this.filterBy.txt !== '') emails = emails.filter(email=> email.from.includes(this.filterBy.txt) || email.subject.includes(this.filterBy.txt) || email.body.includes(this.filterBy.txt))
             //filter by read
