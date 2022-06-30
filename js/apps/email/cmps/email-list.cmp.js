@@ -17,11 +17,10 @@ export default{
        },
        created() {},
        methods: {
-        readMsg(){
-            this.$emit('readMsg')
+        readMsg(id){
+            this.$emit('readMsg',id)
         },
         deleteMsg(id){
-            console.log(id, "ssss")
             this.$emit('deleteMsg', id)
         },
        },

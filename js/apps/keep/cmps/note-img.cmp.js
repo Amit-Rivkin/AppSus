@@ -13,6 +13,7 @@ export default {
                     <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
                     @input="changeBgColor">
                 </div>
+                
 
         </section>
         `,

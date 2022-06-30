@@ -4,11 +4,12 @@ import composeEmail from '../cmps/compose.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 export default{
     template: `
-    <section class="email-app" v-if="emails">
        <h3>email page</h3>
-       <h6>Unread Email: {{unread}}</h6>
-       <email-filter @filter-change="setDisplayFilter"/>
-       <button @click="compose">Compose</button>
+       <button class="compose-btn" @click="compose">Compose</button>
+       <h1>Unread Email: {{unread}}</h1>
+    <section class="email-app" v-if="emails">
+ 
+        <email-filter class="flex flex-column gap" @filter-change="setDisplayFilter"/>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
     </section>
@@ -17,7 +18,7 @@ export default{
            return {
             emails: null,
             filterBy: { //'inbox/sent/trash/draft'
-                showType:'inbox'
+                
             },
             unread:0,
             isCompose:false,
@@ -27,6 +28,7 @@ export default{
        created() {
         emailService.query().then(emails=> {
             this.emails = emails
+            
             this.emails.forEach(eml=>{
                 if(!eml.isRead) this.unread++
             })
@@ -36,14 +38,26 @@ export default{
         
        },
        methods: {
-        updateMsgs(){
+        updateMsgs(id){
+            let email = this.emails.find(eml=>eml.id === id)
+            email.isRead =true
             this.unread--;
         },
         removeEmail(id){
+
             const idx = this.emails.findIndex(email => {
-                return email.id === id;
+                return email.id === id.id;
               });
-              this.emails.splice(idx, 1);
+
+            if(id.type === 'delete'){
+                  this.emails.splice(idx, 1);
+
+            }else{
+                
+                emailService.save(this.emails[idx])
+            }
+            if(this.emails[idx].isRead){
+                this.unread--;}
         },
         compose(){
             this.isCompose = true
@@ -54,7 +68,13 @@ export default{
             //add modal for successfully sending message
         },
         setDisplayFilter(filter){
+            
             this.filterBy[filter.type] = filter.value
+            if(filter.type === "isRead") {
+                
+                this.filterBy.status = "inbox" 
+            }
+            console.log("filterby", this.filterBy)
             emailService.setFilter(filter.type, filter.value)
         }
        },
@@ -62,11 +82,23 @@ export default{
         emailsForDisplay() {
             var emails = this.emails
             if(!this.filterBy)return emails
+            //filter by text
+            if(this.filterBy.txt !== '') emails = emails.filter(email=> email.from.includes(this.filterBy.txt) || email.subject.includes(this.filterBy.txt) || email.body.includes(this.filterBy.txt))
+            //filter by read
+            if(this.filterBy.isRead !== null){
+                if(this.filterBy.isRead) emails = emails.filter(email=> email.isRead)
+                else emails = emails.filter(email=> !email.isRead)
+
+            }
+            //filter by status
             if(this.filterBy.status === "inbox") {
-                return emails.filter(email=> email.to === emailService.getLoggedUserEmail())
+                return emails.filter(email=> email.to === emailService.getLoggedUserEmail() && !email.inTrash)
             }
             if(this.filterBy.status === "sent") {
-                return emails.filter(email=> email.from === emailService.getLoggedUserEmail())
+                return emails.filter(email=> email.from === emailService.getLoggedUserEmail() && !email.inTrash)
+            }
+            if(this.filterBy.status === "trash"){
+                return emails.filter(email=> email.inTrash)
             }
         },
        },

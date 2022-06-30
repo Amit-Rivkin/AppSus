@@ -5,13 +5,25 @@ export default {
     template:`
     <section>
         <section  class="email-preview" @click="checkStatus(email.id)">
-            <p>From : {{email.from}}</p>
-            <p>Subject: {{email.subject}}</p>
-            <p>sent at: {{email.sentAt}}</p>
-            <p>isRead: {{isRead}}</p>
+            <!-- <section class="flex">
+                <p>{{getStar}}</p>
+                <p>From : {{email.from}}</p>
+                <p>Subject: {{email.subject}}</p>
+                <p>sent at: {{email.sentAt}}</p>
+                <p>isRead: {{isRead}}</p>
+            </section> -->
+            <div id="table">
+                <div class="tr">
+                    <div class="td">{{getStar}}</div>
+                    <div class="td">{{email.subject}}</div>
+                    <div class="td">{{email.from}}</div>
+                    <div class="td">{{email.sentAt}}</div>
+                    <div class="td">{{isRead}}</div>
+                    <button @Click="deleteMsg(email.id)">Delete</button>
+                </div>
+            </div>
             <email-half v-if="shouldPreview" :email="email"/>
         </section>
-        <button @Click="deleteMsg(email.id)">Delete</button>
         <hr>
         </section>
     `,
@@ -34,7 +46,7 @@ export default {
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)
-                    this.$emit('readMsg')
+                    this.$emit('readMsg', id)
                 })
 
             }
@@ -42,14 +54,26 @@ export default {
             
         },
         deleteMsg(id){
-            emailService.remove(id).then(()=>{
+            if(!this.email.inTrash){
+                this.email.inTrash = true
+                this.email.isRead = true
+                this.$emit('deleteMsg', {type:'update', id:this.email.id})
 
-                this.$emit('deleteMsg', id)
-            })
-        }
-       
+            }else{
+
+                emailService.remove(id).then(()=>{
+    
+                    this.$emit('deleteMsg', {type:'delete', id:this.email.id})
+                })
+            }
+        },
     },
     computed:{
+        getStar(){
+            return this.email.isStar ? '★' : '☆'
+            
+        }
+       
     },
     components:{
         emailHalf,
