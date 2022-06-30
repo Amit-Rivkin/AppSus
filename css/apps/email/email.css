@@ -1,5 +1,6 @@
 .email-list ul{
     list-style: none;
+    padding: 0;
     
 }
 
@@ -31,8 +32,6 @@
     
 }
 
-
-
 .email-filter{
     grid-area: "emailFilter";
 }
@@ -62,12 +61,16 @@ letter-spacing: .25px;
 font-weight: 500;
 height: 48px;
 min-width: 56px;
+width: 10rem;
+margin: 1rem;
 }
 
 
 #table {
     display: table;
     padding: 5px;
+    margin: 0;
+    width: 100%;
 }
 .tr {
     display: table-row;
@@ -78,7 +81,7 @@ min-width: 56px;
     display: table-cell;
     padding: 5px;
     width: 150px;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 .delete-eml-btn{
