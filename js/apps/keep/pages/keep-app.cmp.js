@@ -7,7 +7,7 @@ import keepFilter from '../cmps/keep-filter.cmp.js'
 
 export default {
     template: `
-        <keep-filter  @addCmp="reRender()"/>
+        <keep-filter  @addCmp="reRender"/>
     <section v-if="notes" class="notes-area main-layout">
         <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor}">
             

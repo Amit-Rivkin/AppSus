@@ -6,13 +6,13 @@ export default {
             <h1>New Message</h1>
             <input type="text" placeholder="To" v-model="to">
             <input type="text" placeholder="Subject" v-model="subject">
-            <textarea rows="4" cols="50" v-model="messageText"></textarea>
+            <textarea rows="30" cols="50" v-model="messageText"></textarea>
             <button @click="sendEmail">Send</button>
             <button @click="exitCompose">X</button>
 
-            <pre>to: {{to}}</pre>
+            <!-- <pre>to: {{to}}</pre>
             <pre>sub: {{subject}}</pre>
-            <pre>msg: {{messageText}}</pre>
+            <pre>msg: {{messageText}}</pre> -->
         </section>
 
     `,

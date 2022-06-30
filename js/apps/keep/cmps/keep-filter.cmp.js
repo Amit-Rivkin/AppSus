@@ -42,9 +42,11 @@ export default {
                 newCmp.url = this.note
             }
              
-            NotesService.save(newCmp)
-            // this.note = ''
-            this.$emit('addCmp')
+            NotesService.save(newCmp).then(()=>{
+
+                this.note = ''
+                this.$emit('addCmp', newCmp)
+            })
         }
     },
     computed: {

@@ -1,5 +1,5 @@
 import { NotesService } from "../services/keep-service.js"
-
+import noteTools from "./note-tools.cmp.js"
 
 export default {
     props: ['note'],
@@ -12,7 +12,9 @@ export default {
                   <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
                   <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
                   @input="changeBgColor">
-              </div>
+            </div>
+
+          
           </section>
           `,
     data() {
@@ -38,5 +40,8 @@ export default {
     },
     computed: {
       },
+      components:{
+        noteTools
+      }
     }
   

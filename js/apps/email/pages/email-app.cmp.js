@@ -8,7 +8,7 @@ export default{
        <button class="compose-btn" @click="compose"><i class="fa-solid fa-plus"></i> Compose</button>
     <section class="email-app" v-if="emails">
  
-        <email-filter class="flex flex-column gap" @filter-change="setDisplayFilter"/>
+        <email-filter class="flex flex-column" @filter-change="setDisplayFilter"/>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
     </section>
@@ -51,12 +51,13 @@ export default{
             if(id.type === 'delete'){
                   this.emails.splice(idx, 1);
 
-            }else{
-                
+            }else if(id.type === 'update'){
+                if(!this.emails[idx].isRead)this.unread--;
+                this.emails[idx].isRead = true
                 emailService.save(this.emails[idx])
+                
             }
-            if(this.emails[idx].isRead){
-                this.unread--;}
+            
         },
         compose(){
             this.isCompose = true
