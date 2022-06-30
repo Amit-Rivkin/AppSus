@@ -16,6 +16,11 @@
     background-color: whitesmoke;
 }
 
+.logo-img{
+    width: 180px;
+    height: 100px;
+}
+
 .my-footer {
     background-color: #71b8f7;
     padding: 1rem;

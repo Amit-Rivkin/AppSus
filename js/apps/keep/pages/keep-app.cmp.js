@@ -73,24 +73,24 @@ export default {
             console.log(cmp);
             NotesService.query()
                 .then(note => {
-                    // console.log(note);
-                    // if (cmp.type === 'noteTxt') {
-                    //     cmp = NotesService.getEmptyText()
-                    //     this.note[idx].info.txt=cmp.info.txt 
-                    // }
-                    // if (cmp.type === 'noteImg') {
-                    //     cmp = NotesService.getEmptyImg()
-                    //     cmp.info.url = this.note
-                    // }
-                    // if (cmp.type === 'noteTodos') {
-                    //     cmp = NotesService.getEmptyTodo()
-                    //     cmp.info.todos[0].txt = this.note
-                    // }
-                    // if (cmp.type === 'noteVideo') {
-                    //     cmp = NotesService.getEmptyVideo()
-                    //     cmp.url = this.note
-                    // }
-                    note.push(Object.assign({}, cmp))
+                    console.log(note);
+                    if (cmp.type === 'noteTxt') {
+                        cmp = NotesService.getEmptyText()
+                        cmp.info.txt = this.note[idx].info.txt
+                    }
+                    if (cmp.type === 'noteImg') {
+                        cmp = NotesService.getEmptyImg()
+                        cmp.info.url = this.note
+                    }
+                    if (cmp.type === 'noteTodos') {
+                        cmp = NotesService.getEmptyTodo()
+                        cmp.info.todos[0].txt = this.note.info.todos.txt
+                    }
+                    if (cmp.type === 'noteVideo') {
+                        cmp = NotesService.getEmptyVideo()
+                        cmp.url = this.note
+                    }
+                    note.push(cmp)
                     this.notes = note
                     NotesService.saveMany(this.notes)
                 }

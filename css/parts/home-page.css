@@ -1,0 +1,74 @@
+.home-page{
+    height: 70vh;
+}
+.slogen{
+    font-size: 4rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.home-1{
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        top: 270px;
+        left: 1000px;
+}
+
+.home-link.keep {
+    padding: 0.5rem;
+    color: black;
+    position: absolute;
+    top: 230px;
+    left: 1010px;
+    font-size: 3.5rem;
+}
+.home-link.keep:hover {
+  background-color: #71b8f7;
+  border-radius: 1.5rem;
+  color: whitesmoke;
+}
+
+.home-2{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 275px;
+    left: 650px;
+}
+.home-link.book {
+    padding: 0.5rem;
+    color: black;
+    position: absolute;
+    top: 230px;
+    left: 750px;
+    font-size: 3.5rem;
+}
+.home-link.book:hover {
+    background-color: #71b8f7;
+    border-radius: 1.5rem;
+    color: whitesmoke;
+  }
+
+  .home-3{
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    top: 320px;
+    left: 400px;
+}
+
+.home-link.email {
+    padding: 0.5rem;
+    color: black;
+    position: absolute;
+    top: 230px;
+    left: 400px;
+    font-size: 3.5rem;
+}
+
+.home-link.email:hover {
+    background-color: #71b8f7;
+    border-radius: 1.5rem;
+    color: whitesmoke;
+  }

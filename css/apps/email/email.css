@@ -14,7 +14,8 @@
 }
 
 .compose{
-    background-color: lightcoral;
+    background-color: #71b8f7;
+    border-radius: 1.5rem;
 }
 
 .compose textarea{
@@ -45,15 +46,32 @@
 
 .compose{
     grid-area: "compose";
-    position: absolute;
-    bottom:60px;
+    position: fixed;
+    bottom:4rem;
     right:0;
-    height:40rem;
+    height:25rem;
     display: flex;
     flex-direction: column;
     width:40rem;
     gap:20px;
     padding:10px
+}
+
+.send-btn{
+    border: none;
+    color: whitesmoke;
+    background-color: transparent;
+}
+.exit-btn{
+    border: none;
+    color: whitesmoke;
+    background-color: transparent;
+}
+
+.compose-title{
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .search-input{

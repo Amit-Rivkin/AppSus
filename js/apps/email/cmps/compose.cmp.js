@@ -3,12 +3,14 @@ import {emailService} from '../services/email-service.js'
 export default {
     template:`
         <section class="compose">
-            <h1>New Message</h1>
+            <h1 class="compose-title">New Message</h1>
             <input type="text" placeholder="To" v-model="to">
             <input type="text" placeholder="Subject" v-model="subject">
             <textarea rows="30" cols="50" v-model="messageText"></textarea>
-            <button @click="sendEmail">Send</button>
-            <button @click="exitCompose">X</button>
+            <div class="flex space-between">
+            <button class="send-btn" @click="sendEmail">Send</button>
+            <button class="exit-btn" @click="exitCompose">X</button>
+            </div>
 
             <!-- <pre>to: {{to}}</pre>
             <pre>sub: {{subject}}</pre>
