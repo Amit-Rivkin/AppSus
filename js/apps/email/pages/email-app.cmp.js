@@ -2,13 +2,15 @@ import {emailService} from '../services/email-service.js'
 import emailList from '../cmps/email-list.cmp.js'
 import composeEmail from '../cmps/compose.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
+import emailSort from '../cmps/email-sort.cmp.js'
 export default{
     template: `
        <h1>Unread Email: {{unread}}</h1>
        <button class="compose-btn" @click="compose"><i class="fa-solid fa-plus"></i> Compose</button>
        <input class="search-input" type="text" v-model="search" placeholder="search in emails" @input="setDisplayFilter({type: 'txt',value:search})">
-    <section class="email-app" v-if="emails">
-        <email-filter class="flex flex-column" @filter-change="setDisplayFilter"/>
+       <email-sort @on-sort="sortEmails"/>
+       <section class="email-app" v-if="emails">
+           <email-filter class="flex flex-column" @filter-change="setDisplayFilter"/>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
     </section>
@@ -80,6 +82,12 @@ export default{
             }
             console.log("filterby", this.filterBy)
             emailService.setFilter(filter.type, filter.value)
+        },
+        sortEmails(sortType){
+            if(sortType === 'None') return
+            if(sortType === 'Date') return
+            if(sortType === 'Title') return
+            
         }
        },
        computed: {
@@ -112,6 +120,6 @@ export default{
         emailList,
         composeEmail,
         emailFilter,
-
+        emailSort,
        }
    };

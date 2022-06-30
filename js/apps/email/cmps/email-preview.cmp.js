@@ -17,8 +17,8 @@ export default {
                     <div class="td"><span @click.stop="starMsg">{{getStar}}</span></div>
                     <div class="td">{{email.subject}}</div>
                     <div class="td">{{email.from}}</div>
-                    <div class="td">{{email.sentAt}}</div>
-                    <div class="td">{{isRead}}</div>
+                    <div class="td">{{convertTime}}</div>
+                    <div class="td"><span v-html="getReadStatus"></span></div>
                     <button class="delete-eml-btn" @Click="deleteMsg(email.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
@@ -37,7 +37,7 @@ export default {
         }
     },
     created(){
-        if(this.isRead) this.readColor = "#F2F5F5"
+        if(this.isRead) this.readColor = "#cfffff"
     },
     methods:{
         checkStatus(id){
@@ -46,7 +46,7 @@ export default {
             //take care of read status
             if(!this.isRead){
                 this.isRead = !this.isRead
-                this.readColor = "#F2F5F5"
+                this.readColor = "#cfffff"
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)
@@ -81,6 +81,14 @@ export default {
         getStar(){
             return this.isStar ? '★' : '☆'
             
+        },
+        getReadStatus(){
+           return this.isRead ?  '<i class="fa-solid fa-envelope-open"></i>' : '<i class="fa-solid fa-envelope"></i>'
+        },
+        convertTime(){
+            return (Date.now() - this.email.sentAt > 86400000) ? 
+            new Date(this.email.sentAt).toString().split(' ').slice(1,4).join(' ') : // return mon-day-year if over a day ago
+            new Date(this.email.sentAt).toString().split(' ').slice(4,5).join(' ').slice(0,5) //return hh:mm
         }
        
     },

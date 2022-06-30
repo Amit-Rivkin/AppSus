@@ -148,3 +148,9 @@ margin: 1rem;
 .email-preview:hover{
     border: 1px solid;
 }
+
+.email-sort{
+    
+    padding: 10px;
+
+}
