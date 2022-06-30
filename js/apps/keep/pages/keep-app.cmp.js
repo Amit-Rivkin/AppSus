@@ -10,14 +10,10 @@ export default {
         <h3>keep page</h3>
         <keep-filter  @addCmp="reRender"/>
     <section v-if="notes" class="notes-area">
-        <div v-for="cmp in notes" class="note-card" :style="{ backgroundColor: color}">
+        <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor}">
             <button class="note-tools pin" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
-            <button class="note-tools delete" @click="pinNote(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
-            <div class="change-color-container">
-                <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
-                <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color">
-            </div>
-            <!-- <button @click="duplicateNote(cmp.id)">2️⃣</button> -->
+            <button class="note-tools delete" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
+          
             <component class="note-container" @todoDone="reRender"
                 :is="cmp.type"
                 :note="cmp">
@@ -29,7 +25,6 @@ export default {
     data() {
         return {
             notes: null,
-            color: '#rrggbb'
         };
     },
     created() {
@@ -65,10 +60,15 @@ export default {
             NotesService.get(id)
                 .then(() => {
                     const idx = this.notes.findIndex((note) => note.id === id)
-                    this.notes.unshift(this.notes.splice(idx, 1)[0]);
-                    NotesService.save(this.note)
+                    this.notes.unshift(this.notes.splice(idx, 1)[0])
+                    this.notes[0].isPinned = !this.notes[0].isPinned
+                    NotesService.saveMany(this.notes)
                 })
         },
+        changePinColor(id) {
+            let note = this.notes.find(note => note.id === id)
+            if (note.isPinned) return { color: 'red' }
+        }
         // duplicateNote(){
         //     NotesService.get(id)
         //     .then(() => {

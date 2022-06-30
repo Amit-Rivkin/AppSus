@@ -11,7 +11,7 @@ export const NotesService = {
     getEmptyImg,
     getEmptyTodo,
     getEmptyVideo,
-    // saveMany
+    saveMany
 }
 
 const NOTES_KEY = 'notes';
@@ -33,7 +33,12 @@ function get(noteId) {
     return storageService.get(NOTES_KEY, noteId)
 }
 
+function saveMany(notes){
+if (notes !== []) return storageService.putMany(NOTES_KEY,notes)
+}
+
 function save(note) {
+    console.log(note);
     if (note.id) return storageService.put(NOTES_KEY, note)
     else return storageService.post(NOTES_KEY, note)
 }
@@ -61,7 +66,7 @@ function _crateNote(){
          txt: "Fullstack Me Baby!"
          },
          style:{
-         backgroundColor: "#F5F5DC"
+         backgroundColor: "#3ce5e8"
         }
     },
         {
@@ -88,7 +93,7 @@ function _crateNote(){
         ]
          },
          style:{
-            backgroundColor: "#F5F5DC"
+            backgroundColor: "#ed1a2f"
         }
     },
     {
@@ -100,7 +105,7 @@ function _crateNote(){
             title: "Get video here",
             },
             style:{
-                backgroundColor: "#F5F5DC"
+                backgroundColor: "#1aedb5"
             }
         },
     {
@@ -123,7 +128,7 @@ function _crateNote(){
          txt: "Burn caloreis in this spirnt🥵!"
         },
         style:{
-            backgroundColor: "#F5F5DC"
+            backgroundColor: "#3ce5e8"
         }
     },
         {
@@ -134,7 +139,7 @@ function _crateNote(){
             txt: "Coding is my life"
         },
         style:{
-            backgroundColor: "#F5F5DC"
+            backgroundColor: "#3ce5e8"
         }
     },
     {
@@ -161,7 +166,7 @@ function _crateNote(){
            ]
             },
             style:{
-               backgroundColor: "#F5F5DC"
+               backgroundColor: "#ed1a2f"
            }
        },
     ]

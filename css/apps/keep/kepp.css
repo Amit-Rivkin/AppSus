@@ -1,5 +1,5 @@
 .note-card{
-    background-color: #1224eb40;
+    /* background-color: #1224eb40; */
     width: 250px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 50px;
     padding: 24px 8px;
@@ -20,7 +20,8 @@ img{
 .text-area{
    /* text-align: right; */
     background-color: transparent;
-    border: transparent;
+    border: none;
+    outline: none;
     resize: none;
 }
 
@@ -52,6 +53,7 @@ position: absolute;
 left: 0;
 top: 0;
 cursor: pointer;
+display: inline;
 }
 
 .change-color-container{
@@ -65,4 +67,8 @@ cursor: pointer;
 
 .note-tools:hover{
     color: black;
+}
+
+.change-bg-color{
+    display: inline;
 }

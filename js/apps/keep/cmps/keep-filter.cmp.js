@@ -10,7 +10,6 @@ export default {
                   <button class="add-btn image" @click="changeType('noteImg')"><i class="fa-solid fa-image"></i></i></button>
                   <button class="add-btn list" @click="changeType('noteTodos')"><i class="fa-solid fa-list"></i></button>
                   <button class="add-btn video" @click="changeType('noteVideo')"><i class="fa-brands fa-youtube"></i></button>
-                  <!-- <button @click="save">save</button> -->
           </section>
           `,
     data() {
@@ -39,7 +38,7 @@ export default {
             if (this.type === 'noteTodos') {
                 newCmp = NotesService.getEmptyTodo()
                 //fill the object with the data
-                newCmp.todos.txt = this.note
+                newCmp.info.todos[0].txt = this.note
             }
             if (this.type === 'noteVideo') {
                 newCmp = NotesService.getEmptyVideo()

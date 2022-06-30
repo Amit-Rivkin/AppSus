@@ -1,12 +1,15 @@
 
 import { NotesService } from "../services/keep-service.js"
 
-
-
 export default {
   props: ['note'],
   template: `<article class="note-container">
-      <h2>{{note.info.label}}</h2>
+    <div class="change-color-container">
+              <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
+              <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
+              @input="changeBgColor">
+          </div>
+    <h2>{{note.info.label}}</h2>
       <ul>
         <li class="clean-list flex space-between" v-for="(todo,idx) in note.info.todos">
           <h1 :style="setMarked(todo)"
@@ -15,13 +18,14 @@ export default {
         </li>
       </ul>
       <form @submit.prevent="addTodo(this.note.info.todos)">
-      <input type="text" placeholder="Enter your todo here">
+      <input type="text" placeholder="Enter your todo here" v-model="todoTxt">
       </form>
     </article>
     `,
   data() {
     return {
-
+      todoTxt: '',
+      color: ''
     };
   },
   methods: {
@@ -41,9 +45,13 @@ export default {
     },
     addTodo(todo) {
       console.log(todo);
-      NotesService.query()
-      .then( note=> {
-      })
+      todo.push({ txt: this.todoTxt, doneAt: null })
+      this.todoTxt = ''
+      NotesService.save(this.note)
+    },
+    changeBgColor() {
+      this.note.style.backgroundColor = this.color
+      NotesService.save(this.note)
     }
   },
   computed: {
