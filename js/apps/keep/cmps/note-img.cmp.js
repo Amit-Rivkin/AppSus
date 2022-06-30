@@ -6,7 +6,7 @@ export default {
         <section>
             <input class="title-input" type="text" v-model="title" @change="savetitle"/>
             <div class="img-container">
-                <img :src= "note.info.url" >
+                <img class="note-img" :src= "note.info.url" >
             </div>
             <div class="change-color-container">
                     <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>

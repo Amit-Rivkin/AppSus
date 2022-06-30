@@ -7,10 +7,9 @@ export default {
         <section>
             <div>
                 <input class="title-input" type="text" v-model="title" @change="savetitle"/> 
-                <video width="150" height="100" controls>
-                    <source src="note.info.url" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe v-if="url" width="200" height="100"
+                    :src="youtube_parser">
+                    </iframe>
             </div>
             <div class="change-color-container">
                 <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
@@ -23,6 +22,7 @@ export default {
         return {
             color: '',
             title: this.note.info.title,
+            url: this.note.info.url
         }
     },
     methods: {
@@ -36,6 +36,13 @@ export default {
         },
     },
     computed: {
+        youtube_parser(){
+            console.log(this.url);
+          var vidId = this.url.match('[v=].*')
+          if (vidId) return "https://www.youtube.com/embed/"+vidId[0].slice(2)
+          console.log(vidId);
+          
+        },
     },
 
 }

@@ -23,7 +23,7 @@
     height: fit-content;
 }
 
-img{
+.note-img{
     width: 180px;
     height: 100px;
 }
@@ -68,7 +68,8 @@ display: inline;
 
 .change-color-container{
     position: relative;
-    display: inline-block;
+    left: 70px;
+    top: 20px;
 }
 
 .note-tools{
@@ -77,10 +78,6 @@ display: inline;
 
 .note-tools:hover{
     color: lightslategray;
-}
-
-.change-bg-color{
-    display: inline;
 }
 
 .title-input{

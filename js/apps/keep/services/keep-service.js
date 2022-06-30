@@ -101,7 +101,7 @@ function _crateNote(){
         type: "noteVideo",
         isPinned: false,
         info: {
-            url: "../../../video/1.mp4",
+            url: "https://www.youtube.com/watch?v=t0Q2otsqC4I",
             title: "Get video here",
             },
             style:{
