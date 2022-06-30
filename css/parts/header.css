@@ -1,8 +1,26 @@
-.app-header{
+.app-header {
     background-color: #71b8f7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 1rem;
     border-radius: 3rem;
+}
+
+.header-link {
+    margin-inline-start: 2rem;
+    color: whitesmoke;
+    border-radius: 3rem;
+    padding: 2rem;
+}
+
+.header-link:hover {
+    color: grey;
+    background-color: whitesmoke;
+}
+
+.my-footer {
+    background-color: #71b8f7;
+    padding: 1rem;
+    border-radius: 3rem;
+   text-align: center;
+   margin-top: 2rem;
+   color: whitesmoke;
 }

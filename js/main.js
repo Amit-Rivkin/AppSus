@@ -1,6 +1,6 @@
 import { router } from './router.js'
 import appHeader from './general-cmps/app-header.cmp.js'
-// import appFooter from './general-cmps/app-footer.cmp.js'
+import appFooter from './general-cmps/app-footer.cmp.js'
 
 const options = {
     template: `
@@ -12,7 +12,7 @@ const options = {
       `,
     components: {
         appHeader,
-        // appFooter
+        appFooter
     },
   };
   
