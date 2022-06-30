@@ -70,6 +70,7 @@ function _createEmail() {
     from: "momo@momo.com",
     to:'ron@appsus.com',
     inTrash: false,
+    isStar: false,
   }
 }
 
@@ -83,6 +84,7 @@ function getEmptyEmail(){
         to: "",
         from:"ron@appsus.com",
         inTrash: false,
+        isStar: false,
       }
 }
 

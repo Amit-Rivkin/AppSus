@@ -4,11 +4,12 @@ import composeEmail from '../cmps/compose.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 export default{
     template: `
-    <section class="email-app" v-if="emails">
        <h3>email page</h3>
-       <email-filter @filter-change="setDisplayFilter"/>
+       <button class="compose-btn" @click="compose">Compose</button>
        <h1>Unread Email: {{unread}}</h1>
-       <button @click="compose">Compose</button>
+    <section class="email-app" v-if="emails">
+ 
+        <email-filter class="flex flex-column gap" @filter-change="setDisplayFilter"/>
        <email-list :emails="emailsForDisplay" @read-msg="updateMsgs" @delete-msg="removeEmail"/>
        <compose-email v-if="isCompose" @exit-compose="isCompose=false" @send-email="updateEmails"/>
     </section>

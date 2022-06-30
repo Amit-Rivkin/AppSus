@@ -1,5 +1,10 @@
 .email-list ul{
     list-style: none;
+    
+}
+
+.email-list li{
+    background: #FFFFFF;
 }
 
 .email-half{
@@ -12,4 +17,65 @@
 
 .compose textarea{
     resize: none;
+}
+
+.email-app{
+    /* background: #111111;
+    color: #FFFFFF; */
+    /* background: #111111; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* grid-template-areas: 
+        "searchInput searchInput",
+        "emailFilter emailList"; */
+    
+}
+
+
+
+.email-filter{
+    grid-area: "emailFilter";
+}
+
+.email-list{
+    grid-area: "emailList";
+    
+}
+
+.compose{
+    grid-area: "compose";
+}
+
+.search-input{
+    grid-area: "searchInput";
+}
+
+.compose-btn{
+    background: #FFFFFF;
+box-shadow: 0px 1px 4px rgba(126, 126, 126, 0.5);
+border-radius: 24px;
+border: none;
+color: #3c4043;
+font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+font-size: .875rem;
+letter-spacing: .25px;
+font-weight: 500;
+height: 48px;
+min-width: 56px;
+}
+
+
+#table {
+    display: table;
+    padding: 5px;
+}
+.tr {
+    display: table-row;
+    padding: 5px;
+}
+.td {
+    display: table-cell;
+    padding: 5px;
+    width: 150px;
+    margin: 5px;
 }
