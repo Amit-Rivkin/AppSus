@@ -72,10 +72,17 @@ min-width: 56px;
 .tr {
     display: table-row;
     padding: 5px;
+    /* width: 100%; */
 }
 .td {
     display: table-cell;
     padding: 5px;
     width: 150px;
     margin: 5px;
+}
+
+.delete-eml-btn{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }

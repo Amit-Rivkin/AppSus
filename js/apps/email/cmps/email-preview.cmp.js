@@ -13,13 +13,13 @@ export default {
                 <p>isRead: {{isRead}}</p>
             </section> -->
             <div id="table">
-                <div class="tr">
+                <div class="tr" :style="{backgroundColor: readColor}">
                     <div class="td">{{getStar}}</div>
                     <div class="td">{{email.subject}}</div>
                     <div class="td">{{email.from}}</div>
                     <div class="td">{{email.sentAt}}</div>
                     <div class="td">{{isRead}}</div>
-                    <button @Click="deleteMsg(email.id)">Delete</button>
+                    <button class="delete-eml-btn" @Click="deleteMsg(email.id)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
                 </div>
             </div>
             <email-half v-if="shouldPreview" :email="email"/>
@@ -31,10 +31,12 @@ export default {
         return{
             shouldPreview:false,
             isRead:this.email.isRead,
+            readColor: null,
 
         }
     },
     created(){
+        if(this.isRead) this.readColor = "lightgrey"
     },
     methods:{
         checkStatus(id){
@@ -43,6 +45,7 @@ export default {
             //take care of read status
             if(!this.isRead){
                 this.isRead = !this.isRead
+                this.readColor = "lightgrey"
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)
@@ -67,6 +70,11 @@ export default {
                 })
             }
         },
+        isReadStyle(){
+            if(this.isRead){
+                return 'grey'
+            } 
+        }
     },
     computed:{
         getStar(){
