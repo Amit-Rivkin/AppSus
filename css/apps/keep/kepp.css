@@ -1,16 +1,22 @@
 .note-card{
-    /* background-color: #1224eb40; */
     width: 250px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 50px;
     padding: 24px 8px;
-    height: 200px;
+    height: fit-content;
+    margin: 0;
+    
 }
 .notes-area{
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    margin: auto;
+    column-count: 3;
 }
  
+.note-container{
+    height: fit-content;
+}
 
 img{
     width: 180px;
@@ -18,7 +24,6 @@ img{
 }
 
 .text-area{
-   /* text-align: right; */
     background-color: transparent;
     border: none;
     outline: none;
@@ -32,8 +37,8 @@ height: 100px;
 
 .note-filter-container{
     width: 300px;
-    margin: auto;
     border-radius: 5px;
+    margin: 0.5rem auto;
 }
 .note-tools,
 .add-btn{
@@ -62,13 +67,22 @@ display: inline;
 }
 
 .note-tools{
-    color: whitesmoke;
+    color: black;
 }
 
 .note-tools:hover{
-    color: black;
+    color: lightslategray;
 }
 
 .change-bg-color{
     display: inline;
+}
+
+.title-input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: underline;
 }

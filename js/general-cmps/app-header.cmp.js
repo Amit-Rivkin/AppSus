@@ -2,7 +2,7 @@ export default {
     template: `
         <header class="app-header">
             <div class="logo">
-                <h3>AppSus</h3>
+            <img class="logo-img" src="../../imgs/logo.png" alt="">
             </div>
             <!-- <button  @click="toggleHamborger" class="hamburger-btn">🎞️</button> -->
             <nav class="nav-bar">

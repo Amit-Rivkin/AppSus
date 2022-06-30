@@ -14,7 +14,7 @@ export default {
           `,
     data() {
         return {
-            note: null,
+            note: '',
             type: 'noteTxt'
         }
     },
@@ -23,30 +23,27 @@ export default {
             this.type = type
         },
         save() {
+            if (this.note==='') return
             let newCmp;
-            //get empty object by type
             if (this.type === 'noteTxt') {
                 newCmp = NotesService.getEmptyText()
-                //fill the object with the data
                 newCmp.info.txt = this.note
             }
             if (this.type === 'noteImg') {
                 newCmp = NotesService.getEmptyImg()
-                //fill the object with the data
                 newCmp.info.url = this.note
             }
             if (this.type === 'noteTodos') {
                 newCmp = NotesService.getEmptyTodo()
-                //fill the object with the data
                 newCmp.info.todos[0].txt = this.note
             }
             if (this.type === 'noteVideo') {
                 newCmp = NotesService.getEmptyVideo()
-                //fill the object with the data
                 newCmp.url = this.note
             }
              
             NotesService.save(newCmp)
+            // this.note = ''
             this.$emit('addCmp')
         }
     },

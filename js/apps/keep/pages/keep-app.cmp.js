@@ -7,17 +7,17 @@ import keepFilter from '../cmps/keep-filter.cmp.js'
 
 export default {
     template: `
-        <h3>keep page</h3>
-        <keep-filter  @addCmp="reRender"/>
+        <keep-filter  @addCmp="reRender()"/>
     <section v-if="notes" class="notes-area">
         <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor}">
-            <button class="note-tools pin" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
-            <button class="note-tools delete" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
-          
+            
             <component class="note-container" @todoDone="reRender"
-                :is="cmp.type"
-                :note="cmp">
-            </component>
+            :is="cmp.type"
+            :note="cmp">
+        </component>
+        <button class="note-tools delete" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
+        <button class="note-tools pin" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
+        <button class="note-tools duplicate" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
 
        </div>
     </section>
@@ -68,14 +68,34 @@ export default {
         changePinColor(id) {
             let note = this.notes.find(note => note.id === id)
             if (note.isPinned) return { color: 'red' }
+        },
+        duplicateNote(cmp, idx) {
+            console.log(cmp);
+            NotesService.query()
+                .then(note => {
+                    // console.log(note);
+                    // if (cmp.type === 'noteTxt') {
+                    //     cmp = NotesService.getEmptyText()
+                    //     this.note[idx].info.txt=cmp.info.txt 
+                    // }
+                    // if (cmp.type === 'noteImg') {
+                    //     cmp = NotesService.getEmptyImg()
+                    //     cmp.info.url = this.note
+                    // }
+                    // if (cmp.type === 'noteTodos') {
+                    //     cmp = NotesService.getEmptyTodo()
+                    //     cmp.info.todos[0].txt = this.note
+                    // }
+                    // if (cmp.type === 'noteVideo') {
+                    //     cmp = NotesService.getEmptyVideo()
+                    //     cmp.url = this.note
+                    // }
+                    note.push(Object.assign({}, cmp))
+                    this.notes = note
+                    NotesService.saveMany(this.notes)
+                }
+                )
         }
-        // duplicateNote(){
-        //     NotesService.get(id)
-        //     .then(() => {
-        //       this.notes.findIndex((note) => note.id === id) .reduce(function (res, current, index, array) {
-        //         return res.concat([current, current]);
-        //     }, []);}
-
     },
     computed: {},
     unmounted() { },

@@ -1,10 +1,4 @@
-.app-header{
-    background-color: coral;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-}
+
 
 /* .nav-bar{
     flex-direction: column;

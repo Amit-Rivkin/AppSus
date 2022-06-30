@@ -159,7 +159,7 @@ function _crateNote(){
             type: "noteTodos",
             isPinned: false,
             info: {
-               label: "Get my stuff together",
+               label: "Todo after the sprint",
                todos: [
             { txt: "Sleep", doneAt: null,},
             { txt: "Eat", doneAt: null,}
@@ -191,7 +191,7 @@ function _crateNote(){
             txt: ''
         },
         style:{
-            backgroundColor: "#F5F5DC"
+            backgroundColor: "#3ce5e8"
            }
     }
 }
@@ -221,7 +221,7 @@ function _crateNote(){
             { txt: "", doneAt: null },            ]
             },
             style:{
-                backgroundColor: "#F5F5DC"
+                backgroundColor: "#ed1a2f"
                }
         }
     }
@@ -236,7 +236,7 @@ function _crateNote(){
                 title: "Get video here",
                 },
                 style:{
-                    backgroundColor: "#F5F5DC"
+                    backgroundColor: "#1aedb5"
                    }
             }
 }

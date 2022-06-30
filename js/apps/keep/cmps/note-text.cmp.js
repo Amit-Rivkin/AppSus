@@ -5,14 +5,14 @@ export default {
     props: ['note'],
     template: `
           <section>
-          <div class="change-color-container">
-                <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
-                <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
-                @input="changeBgColor">
-            </div>
-              <textarea @change="saveTxt()" class="text-area" cols="30" rows="7" v-model="txt" >
+            <textarea @change="saveTxt()" class="text-area" cols="30" rows="7" v-model="txt" >
               {{note.info.txt}}
             </textarea>
+            <div class="change-color-container">
+                  <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
+                  <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
+                  @input="changeBgColor">
+              </div>
           </section>
           `,
     data() {
@@ -29,10 +29,10 @@ export default {
       },
       saveTxt(){
        this.note.info.txt = this.txt
-       console.log(this.txt);
         NotesService.save(this.note)
         
-      }
+      },
+      
     
     
     },
