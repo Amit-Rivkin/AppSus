@@ -14,7 +14,7 @@ export default {
                     @input="changeBgColor">
                 </div>
                 
-
+        
         </section>
         `,
     data() {

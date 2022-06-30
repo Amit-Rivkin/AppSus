@@ -19,7 +19,7 @@ export default {
                     <div class="td">{{email.from}}</div>
                     <div class="td">{{email.sentAt}}</div>
                     <div class="td">{{isRead}}</div>
-                    <button class="delete-eml-btn" @Click="deleteMsg(email.id)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
+                    <button class="delete-eml-btn" @Click="deleteMsg(email.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
             <email-half v-if="shouldPreview" :email="email"/>
@@ -36,7 +36,7 @@ export default {
         }
     },
     created(){
-        if(this.isRead) this.readColor = "lightgrey"
+        if(this.isRead) this.readColor = "#F2F5F5"
     },
     methods:{
         checkStatus(id){
@@ -45,7 +45,7 @@ export default {
             //take care of read status
             if(!this.isRead){
                 this.isRead = !this.isRead
-                this.readColor = "lightgrey"
+                this.readColor = "#F2F5F5"
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)
@@ -59,7 +59,7 @@ export default {
         deleteMsg(id){
             if(!this.email.inTrash){
                 this.email.inTrash = true
-                this.email.isRead = true
+                // this.email.isRead = true
                 this.$emit('deleteMsg', {type:'update', id:this.email.id})
 
             }else{
@@ -70,11 +70,6 @@ export default {
                 })
             }
         },
-        isReadStyle(){
-            if(this.isRead){
-                return 'grey'
-            } 
-        }
     },
     computed:{
         getStar(){
