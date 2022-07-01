@@ -84,9 +84,18 @@ export default{
             emailService.setFilter(filter.type, filter.value)
         },
         sortEmails(sortType){
-            if(sortType === 'None') return
-            if(sortType === 'Date') return
-            if(sortType === 'Title') return
+            if(sortType === 'None') emailService.query().then((emails)=>{
+                this.emails = emails
+            })
+            if(sortType === 'Date') this.emails = this.emails.sort((a,b)=>{
+                return new Date(b.sentAt) - new Date(a.sentAt)
+            })
+
+            if(sortType === 'Title') this.emails = this.emails.sort(( a, b ) => {
+                if ( a.subject.toLowerCase() < b.subject.toLowerCase() )return -1
+                if ( a.subject.toLowerCase() > b.subject.toLowerCase() )return 1
+                return 0
+              })
             
         }
        },
