@@ -74,7 +74,7 @@ function _crateNote(){
          type: "noteImg",
          isPinned: false,
          info: {
-            url: "../../../imgs/1.jpg",
+            url: "imgs/1.jpg",
             title: "Bobi and Me"
         },
         style: {
@@ -113,7 +113,7 @@ function _crateNote(){
         type: "noteImg",
         isPinned: false,
         info: {
-           url: "../../../imgs/2.jpg",
+           url: "imgs/2.jpg",
            title: "My sprint code"
         },
         style: {
@@ -147,7 +147,7 @@ function _crateNote(){
         type: "noteImg",
         isPinned: false,
         info: {
-            url: "../../../imgs/3.jpg",
+            url: "imgs/3.jpg",
             title: "Me during the spirnt"
         },
            style: {

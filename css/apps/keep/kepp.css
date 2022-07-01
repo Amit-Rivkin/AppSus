@@ -24,11 +24,13 @@
  
 .note-container{
     height: fit-content;
+    
 }
 
 .note-img{
     width: 180px;
     height: 100px;
+    
 }
 
 .text-area{
@@ -40,6 +42,7 @@
 
 .img-container{
 height: 100px;
+text-align: center;
 }
 
 
@@ -48,12 +51,13 @@ height: 100px;
     border-radius: 5px;
     margin: 0.5rem auto;
 }
-.note-tool,
+
 .add-btn{
     border: transparent;
     background-color: transparent;
     cursor: pointer;
     color: lightgray;
+    
 }
 
 .note-tool{
@@ -61,6 +65,11 @@ height: 100px;
     background-color: transparent;
     cursor: pointer;
     color: black;
+
+}
+
+.note-tool:not(:first-child){
+    margin-inline-start: 2.7rem;
 }
 
 .add-btn:hover{
@@ -85,7 +94,7 @@ display: inline;
 
 .change-color-container{
     position: relative;
-    left: 70px;
+    left: 200px;
     top: 20px;
 }
 
@@ -103,6 +112,29 @@ display: inline;
     font-size: 1rem;
     font-weight: bold;
     text-decoration: underline;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.video-conatiner{
+    text-align: center;
+}
+
+.todo-input{
+    background-color: #FFFFFF;
+    border: 3px solid lightgray;
+    border-radius: 8px;
+    margin-inline-start: 2rem;
+    margin-top: 1.2rem;
+}
+.todo-txt{
+    padding: 5px;
+}
+
+.remove-todo{
+border: none;
+background-color: transparent;
+transition: all .2s ease-in-out
 }
 
 .search-input-keep {
@@ -120,3 +152,4 @@ display: inline;
 .clicked-btn{
     color: black;
 }
+

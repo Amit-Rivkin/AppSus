@@ -9,7 +9,7 @@ export default {
     template: `
         <keep-filter  @addCmp="reRender"/>
     <section v-if="notes" class="notes-area main-layout">
-        <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor}">
+        <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor }">
             
             <component class="note-container " @todoDone="reRender"
             :is="cmp.type"

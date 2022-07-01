@@ -5,9 +5,9 @@ export default {
     props: ['note'],
     template: `
         <section>
-            <div>
+            <div class="video-conatiner">
                 <input class="title-input" type="text" v-model="title" @change="savetitle"/> 
-                <iframe width="200" height="100"
+                <iframe  width="200" height="100"
                 frameborder="0" allow="accelerometer; autoplay; 
          encrypted-media; gyroscope; picture-in-picture"
          allowfullscreen

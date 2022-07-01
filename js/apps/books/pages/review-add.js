@@ -9,7 +9,7 @@ export default {
     <p>{{this.review.freeText}}</p> -->
     <div v-if="pastReviews" v-for="review,idx in pastReviews">
       <!-- <h1>{{review}}</h1> -->
-      <review-cmp @delete-review="deleteReview" :review="review" :id="idx"></review-cmp>
+      <review-cmp  @delete-review="deleteReview" :review="review" :id="idx"></review-cmp>
      </div>
 
      <form class="flex flex-column align-center" @submit="saveRev">

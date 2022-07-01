@@ -13,9 +13,11 @@ export default {
           <p>Price: {{getcurrency}}</p>
          <long-text :text="books.description"></long-text>
           <p ><img :src= "getBookOnSale"></p>
-          <router-link :to="'/book/'+nextBookId">Next Book</router-link>
+          <div class=" flex space-between">
+          <router-link class="router-btn" :to="'/book/'+nextBookId">Next Book</router-link>
           <br>
-          <router-link :to="'/book/'">Back</router-link>     
+          <router-link class="router-btn" :to="'/book/'">Back</router-link>     
+          </div>
          </section>
          <review-add v-if="books" :id="books.id"/>
   `,
@@ -55,7 +57,7 @@ export default {
 
         },
         getBookOnSale() {
-            if (this.books.listPrice.isOnSale) return `img/1.png`
+            if (this.books.listPrice.isOnSale) return `img/sale.png`
             else return ''
         },
         getBookDescription() {

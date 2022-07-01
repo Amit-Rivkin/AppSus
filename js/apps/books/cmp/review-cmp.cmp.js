@@ -2,12 +2,14 @@ export default {
     props:['review','id'],
     template:`
         <section class="review-cmp">
-            <h3>Name:{{review.name}}</h3>
-            <h3>Rating:{{getRating}}</h3>
-            <h3>Date:{{review.date}}</h3>
-            <h3>Opinion:{{review.freeText}}</h3>
-            <button @click="onDelete">Delete Review</button>
-            </section>
+            <h3 class="review-txt"> Name:{{review.name}}</h3>
+            <h3 class="review-txt"> Rating:{{getRating}}</h3>
+            <h3 class="review-txt"> Date:{{review.date}}</h3>
+            <h3 class="review-txt"> Opinion:{{review.freeText}}</h3>
+            <div>
+            <button class="delete-review"   @click="onDelete"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </section>
 
     `,
  data(){

@@ -7,13 +7,13 @@ export default {
     <input class="title-input" type="text" v-model="label" @change="saveLabel"/>
     <ul>
         <li class="clean-list flex space-between" v-for="(todo,idx) in note.info.todos">
-          <h1 :style="setMarked(todo)"
+          <h1 class="todo-txt" :style="setMarked(todo)"
           @click="markTodo(todo)">{{todo.txt}}</h1>
-          <button @click="removeTodo(idx)">X</button>
+          <button class="remove-todo" @click="removeTodo(idx)"><i class="fa-solid fa-trash-can"></i></button>
         </li>
       </ul>
       <form @submit.prevent="addTodo(this.note.info.todos)">
-        <input type="text" placeholder="Enter your todo here" v-model="todoTxt">
+        <input class="todo-input" type="text" placeholder="Enter your todo here" v-model="todoTxt">
       </form>
       <div class="change-color-container">
                 <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
