@@ -171,12 +171,13 @@
 
 .control-btn {
     background-color: rgb(224 236 249);
-    border: 1px solid;
+    border: none;
     border-radius: 40%;
     padding: 5px;
     margin-inline-start: 0.3rem;
     margin-inline-end: 0.3rem;
     margin-top: 5px;
+    font-size: 1.2rem;
 }
 
 .control-btn:hover {
