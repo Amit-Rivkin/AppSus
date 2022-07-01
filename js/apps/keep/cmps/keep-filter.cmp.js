@@ -4,8 +4,11 @@ export default {
     template: `
           <section class="note-filter-container flex space-between">
               <form @submit.prevent="save">
-                <!-- <input class="search-input-keep" v-if="type==='noteImg'" type="file"> -->
-                <input class="search-input-keep" :type="getType" :placeholder="placeholderText" v-model="note"/>
+                <!-- <input class="search-input-keep" v-if="type==='noteImg'" type="file" v-model="note"> -->
+                <form @submit.prevent="save">
+                <input class="search-input-keep" v-if="type!=='noteTxt' "  type="text" placeholder="Enter a title" v-model="title"/>
+                </form>
+                <input class="search-input-keep" type="text" :placeholder="placeholderText" v-model="note"/>
             </form>
                   <button :class="{ 'clicked-btn': type === 'noteTxt' }" class="add-btn txt" @click="changeType('noteTxt')"><i class="fa-solid fa-a"></i></button>
                   <button :class="{ 'clicked-btn': type === 'noteImg' }" class="add-btn image" @click="changeType('noteImg')"><i class="fa-solid fa-image"></i></i></button>
@@ -16,6 +19,7 @@ export default {
     data() {
         return {
             note: '',
+            title: '',
             type: 'noteTxt',
         }
     },
@@ -26,6 +30,7 @@ export default {
         },
         save() {
             if (this.note==='') return
+            if (this.title==='') return
             let newCmp;
             if (this.type === 'noteTxt') {
                 newCmp = NotesService.getEmptyText()
@@ -34,18 +39,21 @@ export default {
             if (this.type === 'noteImg') {
                 newCmp = NotesService.getEmptyImg()
                 newCmp.info.url = this.note
+                newCmp.info.title = this.title
             }
             if (this.type === 'noteTodos') {
                 newCmp = NotesService.getEmptyTodo()
                 newCmp.info.todos[0].txt = this.note
+                newCmp.info.label = this.title
             }
             if (this.type === 'noteVideo') {
                 newCmp = NotesService.getEmptyVideo()
                 newCmp.info.url = this.note
+                newCmp.info.title = this.title
             }
              
             NotesService.save(newCmp).then(()=>{
-
+                this.title=''
                 this.note = ''
                 this.$emit('addCmp', newCmp)
             })

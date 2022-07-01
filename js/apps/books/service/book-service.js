@@ -1,4 +1,4 @@
-import { utilService } from './util-service.js';
+import { utilService } from './util-service.js'
 import { storageService } from "../../../general-service/async-storage-service.js"
 const BOOKS_KEY = 'books';
 _createBooks();

@@ -236,7 +236,7 @@ function _crateNote(){
             isPinned: false,
             info: {
                 url: "",
-                title: "Enter Title here",
+                title: "",
                 },
                 style:{
                     backgroundColor: "#1aedb5"
