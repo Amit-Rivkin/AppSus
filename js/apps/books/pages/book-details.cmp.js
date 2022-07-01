@@ -57,7 +57,7 @@ export default {
 
         },
         getBookOnSale() {
-            if (this.books.listPrice.isOnSale) return `img/sale.png`
+            if (this.books.listPrice.isOnSale) return `imgs/sale.png`
             else return ''
         },
         getBookDescription() {
