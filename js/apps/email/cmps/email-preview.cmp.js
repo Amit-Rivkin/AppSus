@@ -37,7 +37,7 @@ export default {
         }
     },
     created(){
-        if(this.isRead) this.readColor = "#cfffff"
+        if(this.isRead) this.readColor = "rgb(224 236 249)"
     },
     methods:{
         checkStatus(id){
@@ -46,7 +46,7 @@ export default {
             //take care of read status
             if(!this.isRead){
                 this.isRead = !this.isRead
-                this.readColor = "#cfffff"
+                this.readColor = "rgb(224 236 249)"
                 emailService.get(id).then(email=>{
                     email.isRead = true
                     emailService.save(email)

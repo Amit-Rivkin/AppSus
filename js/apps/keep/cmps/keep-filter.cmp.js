@@ -4,7 +4,7 @@ export default {
     template: `
           <section class="note-filter-container flex space-between">
             <form @submit.prevent="save">
-                <input type="text" v-model="note"/>
+                <input class="search-input-keep" type="text" placeholder="Take a note..." v-model="note"/>
             </form>
                   <button class="add-btn txt" @click="changeType('noteTxt')"><i class="fa-solid fa-a"></i></button>
                   <button class="add-btn image" @click="changeType('noteImg')"><i class="fa-solid fa-image"></i></i></button>

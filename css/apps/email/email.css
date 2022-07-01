@@ -1,28 +1,30 @@
-.email-list ul{
+.email-list ul {
     list-style: none;
     padding: 0;
-    
+
 }
 
-.email-list li{
+.email-list li {
     background: #FFFFFF;
 }
 
-.email-half{
-    background-color: rgba(245, 245, 245, 0.8);
-    gap:1rem;
+.email-half {
+    background-color: #e0ecf9;
+    padding: 5px;
+    border: 10px solid white;
+    gap: 1rem;
 }
 
-.compose{
+.compose {
     background-color: #71b8f7;
     border-radius: 1.5rem;
 }
 
-.compose textarea{
+.compose textarea {
     resize: none;
 }
 
-.email-app{
+.email-app {
     /* background: #111111;
     color: #FFFFFF; */
     /* background: #111111; */
@@ -32,77 +34,84 @@
         "searchInput searchInput",
         "emailFilter emailList"; */
     height: 75vh;
-    
+
 }
 
-.email-filter{
+.email-filter {
     grid-area: "emailFilter";
 }
 
-.email-list{
+.email-list {
     grid-area: "emailList";
-    
+
 }
 
-.compose{
+.compose {
     grid-area: "compose";
     position: fixed;
-    bottom:4rem;
-    right:0;
-    height:25rem;
+    bottom: 4rem;
+    right: 0;
+    height: 25rem;
     display: flex;
     flex-direction: column;
-    width:40rem;
-    gap:20px;
-    padding:10px
+    width: 40rem;
+    gap: 20px;
+    padding: 10px
 }
 
-.send-btn{
-    border: none;
+.send-btn {
+    border: 2px solid black;
     color: whitesmoke;
     background-color: transparent;
-}
-.exit-btn{
-    border: none;
-    color: whitesmoke;
-    background-color: transparent;
+    border-radius: 1rem;
+    padding: 5px;
 }
 
-.compose-title{
+.exit-btn {
+    border: 2px solid black;
+    color: whitesmoke;
+    background-color: transparent;
+    border-radius: 1rem;
+    padding: 5px;
+}
+
+.compose-title {
     color: whitesmoke;
     text-align: center;
     text-decoration: underline;
 }
 
-.search-input{
-    background-color:#FFFFFF;
+.search-input {
+    background-color: #FFFFFF;
     border: 3px solid #71b8f7;
-    width:800px;
-    height:50px;
+    width: 800px;
+    height: 50px;
     border-radius: 8px;
+    margin-inline-start: 8rem;
+
 }
 
-.search-input:focus{
+.search-input:focus {
     outline: none;
     background-color: rgb(241 243 244);
-    box-shadow: inset 0 0 0 1px black, 0 0 3px 1px #71b8f7; 
+    box-shadow: inset 0 0 0 1px black, 0 0 3px 1px #71b8f7;
 
 }
 
-.compose-btn{
+.compose-btn {
     background: #FFFFFF;
-box-shadow: 0px 1px 4px rgba(126, 126, 126, 0.5);
-border-radius: 24px;
-border: none;
-color: #3c4043;
-font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-font-size: .875rem;
-letter-spacing: .25px;
-font-weight: 500;
-height: 48px;
-min-width: 56px;
-width: 10rem;
-margin: 1rem;
+    box-shadow: 0px 1px 4px rgba(126, 126, 126, 0.5);
+    border-radius: 24px;
+    border: none;
+    color: #3c4043;
+    font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-size: .875rem;
+    letter-spacing: .25px;
+    font-weight: 500;
+    height: 48px;
+    min-width: 56px;
+    width: 10rem;
+    margin: 1rem;
 }
 
 
@@ -112,11 +121,13 @@ margin: 1rem;
     margin: 0;
     width: 100%;
 }
+
 .tr {
     display: table-row;
     padding: 5px;
     /* width: 100%; */
 }
+
 .td {
     display: table-cell;
     padding: 5px;
@@ -124,33 +135,81 @@ margin: 1rem;
     /* margin: 5px; */
 }
 
-.delete-eml-btn{
+.delete-eml-btn {
     cursor: pointer;
     background-color: transparent;
     border: none;
 }
 
-.btn{
-    height:2rem;
+.btn {
+    height: 2rem;
     background-color: transparent;
     border: none;
     border-bottom: none;
 }
 
-.btn:hover{
-    background-color: lightgray; 
+.btn:hover {
+    background-color: #71b8f7;
+    border-end-end-radius: 1rem;
+    border-start-end-radius: 1rem;
+    color: whitesmoke;
 }
 
-.email-preview{
+.email-preview {
     cursor: pointer;
 }
 
-.email-preview:hover{
+.email-preview:hover {
     border: 1px solid;
 }
 
-.email-sort{
-    
+.email-sort {
+
     padding: 10px;
 
+}
+
+.control-btn {
+    background-color: rgb(224 236 249);
+    border: 1px solid;
+    border-radius: 40%;
+    padding: 5px;
+    margin-inline-start: 0.3rem;
+    margin-inline-end: 0.3rem;
+    margin-top: 5px;
+}
+
+.control-btn:hover {
+    background-color: lightgray;
+}
+
+.email-half-control-btn {
+    text-align: end;
+}
+
+.email-half-main-content {
+    padding: 5px;
+}
+
+.line-content {
+    padding: 5px;
+}
+
+.line-content.subject {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.sort-select {
+    background-color: #FFFFFF;
+    border: 3px solid #71b8f7;
+    padding: 2px;
+    border-radius: 8px;
+    margin-inline-start: 0.5rem;
+}
+
+.sort-select:focus {
+    outline: none;
+    background-color: rgb(241 243 244);
+    box-shadow: inset 0 0 0 1px black, 0 0 3px 1px #71b8f7;
 }

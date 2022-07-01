@@ -2,7 +2,7 @@ export default {
     template:`
         <section class="email-sort">
             <label for="sort">Sort By:</label>
-            <select @change="onSort">
+            <select class="sort-select" @change="onSort">
                 <option>None</option>
                 <option>Date</option>
                 <option>Title</option>

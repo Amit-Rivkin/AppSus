@@ -5,6 +5,7 @@
 @import './parts/base.css';
 @import './parts/header.css';
 @import './parts/helpers.css';
+@import './mq/mq.css';
 
 *{
     box-sizing: border-box;

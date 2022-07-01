@@ -2,12 +2,15 @@ export default {
     props:['email'],
     template:`
         <section class="email-half">
-            <button>Big</button>
-            <button>star</button>
-            <div>Subject {{email.subject}}</div>
-            <div>{{email.from}}</div>
-            <p>{{email.body}}</p>
-            <hr>
+            <div class="email-half-control-btn">
+            <button class="control-btn big-btn">big</button>
+            <button class="control-btn star-btn">star</button>
+            </div>
+            <div class="email-half-main-content" >
+            <div class="line-content subject">Subject: {{email.subject}}</div>
+            <div class="line-content">{{email.from}}</div>
+            <p class="line-content">{{email.body}}</p>
+            </div>
         </section>
 
     `,

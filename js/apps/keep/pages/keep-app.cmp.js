@@ -15,9 +15,11 @@ export default {
             :is="cmp.type"
             :note="cmp">
         </component>
-        <button class="note-tools delete" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
-        <button class="note-tools pin" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
-        <button class="note-tools duplicate" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
+        <div class="note-tools">
+        <button class="note-tool delete" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
+        <button class="note-tool pin" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
+        <button class="note-tool duplicate" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
+        </div>
 
        </div>
     </section>
@@ -73,30 +75,26 @@ export default {
             console.log(cmp);
             NotesService.query()
                 .then(note => {
-                    console.log(note);
-                    if (cmp.type === 'noteTxt') {
-                        cmp = NotesService.getEmptyText()
-                        cmp.info.txt = this.note[idx].info.txt
-                    }
-                    if (cmp.type === 'noteImg') {
-                        cmp = NotesService.getEmptyImg()
-                        cmp.info.url = this.note
-                    }
-                    if (cmp.type === 'noteTodos') {
-                        cmp = NotesService.getEmptyTodo()
-                        cmp.info.todos[0].txt = this.note.info.todos.txt
-                    }
-                    if (cmp.type === 'noteVideo') {
-                        cmp = NotesService.getEmptyVideo()
-                        cmp.url = this.note
-                    }
+                    // console.log(note);
+                    // if (cmp.type === 'noteTxt') {
+                    //     cmp = NotesService.getEmptyText()
+                    //     cmp.info.txt = this.note[idx].info.txt
+                    // }
+                    // if (cmp.type === 'noteImg') {
+                    //     cmp = NotesService.getEmptyImg()
+                    //     cmp.info.url = this.note
+                    // }
+                    // if (cmp.type === 'noteTodos') {
+                    //     cmp = NotesService.getEmptyTodo()
+                    //     cmp.info.todos[0].txt = this.note.info.todos.txt
+                    // }
+                
                     note.push(cmp)
                     this.notes = note
                     NotesService.saveMany(this.notes)
-                }
-                )
-        }
-    },
+                })
+            }
+        },
     computed: {},
     unmounted() { },
-};
+    }
