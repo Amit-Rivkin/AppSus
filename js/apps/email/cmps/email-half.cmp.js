@@ -3,8 +3,8 @@ export default {
     template:`
         <section class="email-half">
             <div class="email-half-control-btn">
-            <button class="control-btn big-btn">big</button>
-            <button class="control-btn star-btn">star</button>
+            <button class="control-btn big-btn"><i class="fa-solid fa-expand"></i></button>
+            <button @click="emitStar" class="control-btn star-btn">⭐</button>
             </div>
             <div class="email-half-main-content" >
             <div class="line-content subject">Subject: {{email.subject}}</div>
@@ -23,6 +23,9 @@ export default {
     methods:{
         togglePreview(){
             this.showPreview = !this.showPreview
+        },
+        emitStar(){
+            this.$emit('onStar')
         }
     },
     computed:{}
