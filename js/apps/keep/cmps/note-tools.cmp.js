@@ -5,7 +5,7 @@ export default {
     template: `<article class="note-actions-container">
  <div class="change-color-container">
                     <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
-                    <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
+                    <input class="change-bg-color-input" title="Change bg color"  type="color" :style="{ color: color}" v-model="color" 
                     @input="changeBgColor">
                 </div>
   <button class="note-tools delete" @click="deleteNote(note.id)"><i class="fa-solid fa-trash-can"></i></button>

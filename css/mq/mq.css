@@ -9,23 +9,108 @@
     .main-layout {
         max-width: 450px;
     }
- 
+
 }
 
 @media (max-width:500px) {
-   .note-card{
-    width: 100%;
-    text-align: center;
-}
-.title-input{
-    margin-inline-start:2rem;
-}
-.main-layout{
-    margin: 0;
-}
-.btn{
-    padding: 30px;
-}
-  }
+    .note-card {
+        width: 100%;
+        text-align: center;
+    }
 
+    .title-input {
+        margin-inline-start: 2rem;
+    }
 
+    .main-layout {
+        max-width:260px;
+        margin: auto;
+    }
+
+    .btn {
+        padding: 30px;
+    }
+
+    .search-input {
+        margin-inline-start: 0;
+        width: 10rem;
+    }
+
+    .td {
+        padding: 2px;
+    }
+
+    .tr {
+        width: 1rem;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 50px;
+        height: 100vh;
+        width: 160px;
+        transform: translateX(100%);
+        transition: transform 0.6s, box-shadow 0.6s;
+    }
+
+    .nav-bar-open {
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 130px;
+        height: 70vh;
+        width: 160px;
+        transform: translateX(0);
+        background-color: #71b8f7;
+        border-radius: 4rem;
+        transition: transform 0.6s, box-shadow 0.6s;
+    }
+
+    .hamburger-btn {
+        display: inline;
+        height: 50px;
+        width: 50px;
+        border: none;
+        color: white;
+        font-size: 1.6em;
+        background-color: transparent;
+        transition: color 0.3s;
+    }
+
+    .slogen {
+        font-size: 2.3rem;
+        margin-top: 1rem;
+    }
+
+    .home-link.keep {
+        font-size: 1.9rem;
+    }
+
+    .home-link.email {
+        font-size: 1.9rem;
+    }
+
+    .home-link.book {
+        font-size: 1.9rem;
+    }
+
+    .home-1 {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+    }
+
+    .home-2 {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+    }
+
+    .home-3 {
+        width: 80px;
+        height: 150px;
+        margin: 10px;
+    }
+}

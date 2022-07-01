@@ -16,9 +16,9 @@ export default {
             :note="cmp">
         </component>
         <div class="note-tools">
-        <button class="note-tool delete" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
-        <button class="note-tool pin" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
-        <button class="note-tool duplicate" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
+        <button class="note-tool delete" title="Delete note" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
+        <button class="note-tool pin" title="Note note" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
+        <button class="note-tool duplicate" title="Duplicate note" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
         </div>
 
        </div>

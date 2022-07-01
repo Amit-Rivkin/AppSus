@@ -3,7 +3,7 @@ import { emailService } from '../services/email-service.js'
 export default {
     props:['email'],
     template:`
-    <section>
+    <section class="email-container">
         <section  class="email-preview" @click="checkStatus(email.id)">
             <!-- <section class="flex">
                 <p>{{getStar}}</p>

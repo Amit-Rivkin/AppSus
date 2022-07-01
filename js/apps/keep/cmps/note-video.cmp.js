@@ -7,8 +7,12 @@ export default {
         <section>
             <div>
                 <input class="title-input" type="text" v-model="title" @change="savetitle"/> 
-                <iframe v-if="url" width="200" height="100"
+                <iframe width="200" height="100"
+                frameborder="0" allow="accelerometer; autoplay; 
+         encrypted-media; gyroscope; picture-in-picture"
+         allowfullscreen
                     :src="youtube_parser">
+                    
                     </iframe>
             </div>
             <div class="change-color-container">
@@ -37,10 +41,8 @@ export default {
     },
     computed: {
         youtube_parser(){
-            console.log(this.url);
           var vidId = this.url.match('[v=].*')
           if (vidId) return "https://www.youtube.com/embed/"+vidId[0].slice(2)
-          console.log(vidId);
           
         },
     },

@@ -17,7 +17,7 @@ export default {
       </form>
       <div class="change-color-container">
                 <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
-                <input class="change-bg-color-input" type="color" :style="{ color: color}" v-model="color" 
+                <input class="change-bg-color-input" title="Change bg color"  type="color" :style="{ color: color}" v-model="color" 
                 @input="changeBgColor">
             </div>
     </article>

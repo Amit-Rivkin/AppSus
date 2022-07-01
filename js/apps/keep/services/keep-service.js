@@ -168,20 +168,23 @@ function _crateNote(){
             style:{
                backgroundColor: "#ed1a2f"
            }
+        },
+           {
+            id: "n110",
+            type: "noteVideo",
+            isPinned: false,
+            info: {
+                url: "https://www.youtube.com/watch?v=x6d5aVBrK6k",
+                title: "I'm prefer this sprint",
+                },
+                style:{
+                    backgroundColor: "#1aedb5"
+                }
        },
     ]
         return notes
     }
 
-
-    // function getNextCarId(carId) {
-    //     return storageService.query(CARS_KEY)
-    //         .then(cars => {
-    //             const idx = cars.findIndex(car => car.id === carId)
-    //             return (idx < cars.length-1)? cars[idx + 1].id : cars[0].id
-    //         })
-    // }
-    
     function getEmptyText() {
         return {
             id: "",
@@ -202,7 +205,7 @@ function _crateNote(){
             isPinned: false,
             info: {
             url: "",
-            title: "Bobi and Me"
+            title: "Enter Title here"
             },
             style: {
             backgroundColor: "#F5F5DC"
@@ -216,7 +219,7 @@ function _crateNote(){
             type: "noteTodos",
             isPinned: false,
             info: {
-            label: "Get my stuff together",
+            label: "Enter Title here",
             todos: [
             { txt: "", doneAt: null },            ]
             },
@@ -233,33 +236,11 @@ function _crateNote(){
             isPinned: false,
             info: {
                 url: "",
-                title: "Get video here",
+                title: "Enter Title here",
                 },
                 style:{
                     backgroundColor: "#1aedb5"
                    }
             }
 }
-    
-    // function _createCars() {
-    //     let cars = utilService.loadFromStorage(CARS_KEY);
-    //     if (!cars || !cars.length) {
-    //         cars = [];
-    //         cars.push(_createCar('Audu Mea', 300));
-    //         cars.push(_createCar('Fiak Ibasa', 120));
-    //         cars.push(_createCar('Subali Pesha', 100));
-    //         cars.push(_createCar('Mitsu Bashi', 150));
-    //         utilService.saveToStorage(CARS_KEY, cars);
-    //     }
-    //     return cars;
-    // }
-    
-    // function _createCar(vendor, maxSpeed = 250) {
-    //     const car = {
-    //         id: utilService.makeId(),
-    //         vendor,
-    //         maxSpeed,
-    //     };
-    //     return car;
-    // }
     
