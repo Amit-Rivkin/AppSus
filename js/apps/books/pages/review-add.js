@@ -4,24 +4,52 @@ export default {
   props:["id"],
     template: `
     <h1>Reviews</h1>
+    <!-- <p>{{this.review.rating}}</p>
+    <p>{{this.review.date}}</p>
+    <p>{{this.review.freeText}}</p> -->
     <div v-if="pastReviews" v-for="review in pastReviews">
-          <pre>{{review}}</pre>
+      <h1>{{this.pastReviews}}</h1>
      </div>
 
-     <h1>Add Review</h1>
-     <form @submit="saveRev">
-        <input ref="nameInput" type="text" v-model="review.name" >
-        <select v-model.number="review.rating" name="rating" id="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <input v-model="review.date" type="date" >
-          <textarea v-model="review.freeText" rows="4" cols="50"></textarea>
+     <form class="flex flex-column align-center" @submit="saveRev">
+       <h1 class="add">Add Review</h1>
+        <input class="review-input" ref="nameInput" type="text" v-model="review.name" >
+        <form class="rating-star">
+  <label>
+    <input type="radio" name="stars" value="1" v-model="rating" />
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2"  v-model="rating" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3"  v-model="rating" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4"  v-model="rating" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5"  v-model="rating" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+  </label>
+</form>
+          <input class="review-input" v-model="review.date" type="date" >
+          <textarea class="review-textArea"  v-model="review.freeText" rows="4" cols="50"></textarea>
           <br/>
-          <input type="submit" value="Submit">
+          <input class="review-input" type="submit" value="Submit">
      </form>
      <!-- <pre>{{name}}</pre>
      <pre>{{rating}}</pre>
