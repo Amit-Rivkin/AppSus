@@ -8,7 +8,8 @@ export const bookService = {
   save,
   get,
   addReview,
-  getNextBookId
+  getNextBookId,
+  deleteReview,
 };
 
 function getNextBookId(bookId){
@@ -43,6 +44,13 @@ return get(bookId).then(book=>{
   return save(book)
 })
 }
+
+function deleteReview(bookId, reviewId) {
+  return get(bookId).then(book=>{
+    book.reviews.splice(reviewId,1)
+    return save(book)
+  })
+  }
 
 // function getEmptyBook() {
 //     return { id: '', vendor: '', maxSpeed: 0 };

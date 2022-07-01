@@ -138,3 +138,7 @@ margin-bottom: 1rem;
     color: rgb(238, 255, 0);
   }
   
+  .review-cmp{
+    border: 3px solid white;
+    padding: 10px;
+  }
