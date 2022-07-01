@@ -15,7 +15,7 @@ export default {
             <div id="table">
                 <div class="tr" :style="{backgroundColor: readColor}">
                     <div class="td"><span @click.stop="starMsg">{{getStar}}</span></div>
-                    <div class="td">{{email.subject}}</div>
+                    <div class="td">{{getSubject}}</div>
                     <div class="td">{{email.from}}</div>
                     <div class="td">{{convertTime}}</div>
                     <div class="td"><span :title="getTitle" @click.stop="markReadUnread" v-html="getReadStatus"></span></div>
@@ -99,6 +99,9 @@ export default {
         },
         getTitle(){
            return this.isRead ? "Mark As Unread" : "Mark As Read"
+        },
+        getSubject(){
+            return (this.email.subject.length>13) ? this.email.subject.slice(0,13) + "..." : this.email.subject
         }
        
     },
