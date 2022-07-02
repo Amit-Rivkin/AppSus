@@ -60,7 +60,7 @@ export default {
                     //     cmp.url = this.note
                     // }
                     note.push(Object.assign({}, cmp))
-                    console.log("asdsadsda",note[note.length-1].id)
+                    // console.log("asdsadsda",note[note.length-1].id)
                     // note[note.length-1].id="212112212112"
                     this.notes = note
                     NotesService.saveMany(this.notes)
