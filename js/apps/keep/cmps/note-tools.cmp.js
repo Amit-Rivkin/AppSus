@@ -10,7 +10,7 @@ export default {
                 </div>
   <button class="note-tools delete" @click="deleteNote(note.id)"><i class="fa-solid fa-trash-can"></i></button>
         <button class="note-tools pin" @click="pinNote(note.id)" :style="changePinColor(note.id)"><i class="fa-solid fa-thumbtack"></i></button>
-        <button class="note-tools duplicate" @click="duplicateNote(note,idx)"><i class="fa-solid fa-clone"></i></i></button>
+        <button class="note-tools duplicate" @click="duplicateNote(note,idx)"><i class="fa-solid fa-clone"></i></button>
     </article>
     `,
     data() {
@@ -60,6 +60,8 @@ export default {
                     //     cmp.url = this.note
                     // }
                     note.push(Object.assign({}, cmp))
+                    console.log("asdsadsda",note[note.length-1].id)
+                    // note[note.length-1].id="212112212112"
                     this.notes = note
                     NotesService.saveMany(this.notes)
                 }
