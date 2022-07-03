@@ -11,7 +11,7 @@ export default {
                 <input class="search-input-keep" type="text" :placeholder="placeholderText" v-model="note"/>
             </form>
                   <button :class="{ 'clicked-btn': type === 'noteTxt' }" class="add-btn txt" @click="changeType('noteTxt')"><i class="fa-solid fa-a"></i></button>
-                  <button :class="{ 'clicked-btn': type === 'noteImg' }" class="add-btn image" @click="changeType('noteImg')"><i class="fa-solid fa-image"></i></i></button>
+                  <button :class="{ 'clicked-btn': type === 'noteImg' }" class="add-btn image" @click="changeType('noteImg')"><i class="fa-solid fa-image"></i></button>
                   <button :class="{ 'clicked-btn': type === 'noteTodos' }" class="add-btn list" @click="changeType('noteTodos')"><i class="fa-solid fa-list"></i></button>
                   <button :class="{ 'clicked-btn': type === 'noteVideo' }" class="add-btn video" @click="changeType('noteVideo')"><i class="fa-brands fa-youtube"></i></button>
           </section>

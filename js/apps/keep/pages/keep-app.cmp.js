@@ -18,7 +18,7 @@ export default {
         <div class="note-tools">
         <button class="note-tool delete" title="Delete note" @click="deleteNote(cmp.id)"><i class="fa-solid fa-trash-can"></i></button>
         <button class="note-tool pin" title="Note note" @click="pinNote(cmp.id)" :style="changePinColor(cmp.id)"><i class="fa-solid fa-thumbtack"></i></button>
-        <button class="note-tool duplicate" title="Duplicate note" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></i></button>
+        <button class="note-tool duplicate" title="Duplicate note" @click="duplicateNote(cmp,idx)"><i class="fa-solid fa-clone"></i></button>
         </div>
 
        </div>
@@ -47,7 +47,7 @@ export default {
         reRender() {
             NotesService.query()
                 .then(note => {
-                    console.log(note);
+                    // console.log("yoyo",note);
                     this.notes = note
                 })
         },
@@ -59,20 +59,21 @@ export default {
                 })
         },
         pinNote(id) {
-            NotesService.get(id)
-                .then(() => {
                     const idx = this.notes.findIndex((note) => note.id === id)
-                    this.notes.unshift(this.notes.splice(idx, 1)[0])
+                    var x = this.notes.splice(idx, 1)[0]
+                    this.notes.unshift(x)
                     this.notes[0].isPinned = !this.notes[0].isPinned
-                    NotesService.saveMany(this.notes)
-                })
+                    NotesService.saveMany(this.notes).then((note)=>{
+                        this.notes = note
+                    })
+
         },
         changePinColor(id) {
             let note = this.notes.find(note => note.id === id)
             if (note.isPinned) return { color: 'red' }
         },
         duplicateNote(cmp, idx) {
-            console.log(cmp);
+            // console.log(cmp);
             NotesService.query()
                 .then(note => {
                     // console.log(note);
@@ -90,6 +91,9 @@ export default {
                     // }
                 
                     note.push(cmp)
+                    console.log("here", note)
+                    console.log(note[note.length -1].id)
+                    note[note.length -1].id = "12121"
                     this.notes = note
                     NotesService.saveMany(this.notes)
                 })
@@ -97,4 +101,4 @@ export default {
         },
     computed: {},
     unmounted() { },
-    }
+}
