@@ -29,7 +29,8 @@
 
 .note-img{
     width: 180px;
-    height: 100px;
+margin: auto;
+   margin-inline-start: 1.5rem;
     
 }
 
@@ -42,7 +43,6 @@
 
 .img-container{
 height: 100px;
-text-align: center;
 }
 
 

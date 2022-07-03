@@ -5,9 +5,7 @@ export default {
     template: `
         <section>
             <input class="title-input" type="text" v-model="title" @change="savetitle"/>
-            <div class="img-container">
                 <img class="note-img" :src= "note.info.url" >
-            </div>
             <div class="change-color-container">
                     <button class="note-tools change-bg-color"><i class="fa-solid fa-palette"></i></button>
                     <input class="change-bg-color-input" title="Change bg color" type="color" :style="{ color: color}" v-model="color" 
