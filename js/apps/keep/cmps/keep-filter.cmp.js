@@ -4,7 +4,6 @@ export default {
     template: `
           <section class="note-filter-container flex space-between">
               <form @submit.prevent="save">
-                <!-- <input class="search-input-keep" v-if="type==='noteImg'" type="file" v-model="note"> -->
                 <form @submit.prevent="save">
                 <input class="search-input-keep" v-if="type!=='noteTxt' "  type="text" placeholder="Enter a title" v-model="title"/>
                 </form>
@@ -30,7 +29,6 @@ export default {
         },
         save() {
             if (this.note==='') return
-            if (this.title==='') return
             let newCmp;
             if (this.type === 'noteTxt') {
                 newCmp = NotesService.getEmptyText()
