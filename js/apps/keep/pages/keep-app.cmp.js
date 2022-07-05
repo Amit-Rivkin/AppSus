@@ -1,17 +1,20 @@
-import { NotesService } from '../services/keep-service.js'
+import { notesService } from '../services/keep-service.js'
 import noteTxt from '../cmps/note-text.cmp.js'
 import noteImg from '../cmps/note-img.cmp.js'
 import noteVideo from '../cmps/note-video.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
 import keepFilter from '../cmps/keep-filter.cmp.js'
+import { utilService } from '../../books/service/util-service.js'
 
 export default {
     template: `
         <keep-filter  @addCmp="reRender"/>
     <section v-if="notes" class="notes-area main-layout">
-        <div v-for="(cmp,idx) in notes" class="note-card" :style="{ backgroundColor: notes[idx].style.backgroundColor }">
+        <div v-for="(cmp,idx) in notes" class="note-card" :key="cmp.id" :style="{ backgroundColor: notes[idx].style.backgroundColor }">
             
-            <component class="note-container " @todoDone="reRender"
+            <component class="note-container "
+             @todoDone="reRender"
+             @saveNote="saveNote"
             :is="cmp.type"
             :note="cmp">
         </component>
@@ -30,7 +33,7 @@ export default {
         };
     },
     created() {
-        NotesService.query()
+        notesService.query()
             .then(note => {
                 console.log(note);
                 this.notes = note
@@ -45,60 +48,47 @@ export default {
     },
     methods: {
         reRender() {
-            NotesService.query()
+            notesService.query()
                 .then(note => {
                     // console.log("yoyo",note);
                     this.notes = note
                 })
         },
+        saveNote(note) {
+            notesService.save(note)
+        },
         deleteNote(id) {
-            NotesService.remove(id)
+            notesService.remove(id)
                 .then(() => {
                     const idx = this.notes.findIndex((note) => note.id === id)
                     this.notes.splice(idx, 1);
                 })
         },
         pinNote(id) {
-                    const idx = this.notes.findIndex((note) => note.id === id)
-                    var x = this.notes.splice(idx, 1)[0]
-                    this.notes.unshift(x)
-                    this.notes[0].isPinned = !this.notes[0].isPinned
-                    NotesService.saveMany(this.notes).then((note)=>{
-                        this.notes = note
-                    })
+            const idx = this.notes.findIndex((note) => note.id === id)
+            var x = this.notes.splice(idx, 1)[0]
+            this.notes.unshift(x)
+            this.notes[0].isPinned = !this.notes[0].isPinned
+            notesService.saveMany(this.notes).then((note) => {
+                this.notes = note
+            })
 
         },
         changePinColor(id) {
             let note = this.notes.find(note => note.id === id)
             if (note.isPinned) return { color: 'red' }
         },
-        duplicateNote(cmp, idx) {
-            // console.log(cmp);
-            NotesService.query()
-                .then(note => {
-                    // console.log(note);
-                    // if (cmp.type === 'noteTxt') {
-                    //     cmp = NotesService.getEmptyText()
-                    //     cmp.info.txt = this.note[idx].info.txt
-                    // }
-                    // if (cmp.type === 'noteImg') {
-                    //     cmp = NotesService.getEmptyImg()
-                    //     cmp.info.url = this.note
-                    // }
-                    // if (cmp.type === 'noteTodos') {
-                    //     cmp = NotesService.getEmptyTodo()
-                    //     cmp.info.todos[0].txt = this.note.info.todos.txt
-                    // }
-                
-                    note.push(cmp)
-                    console.log("here", note)
-                    console.log(note[note.length -1].id)
-                    note[note.length -1].id = "12121"
-                    this.notes = note
-                    NotesService.saveMany(this.notes)
+        duplicateNote(note, idx) {
+            // console.log(note);
+            notesService.query()
+                .then(notes => {
+                    const newNote = { ...note, id: utilService.makeId() }
+                    notes.push(newNote)
+                    this.notes = notes
+                    notesService.saveMany(this.notes)
                 })
-            }
-        },
+        }
+    },
     computed: {},
     unmounted() { },
 }

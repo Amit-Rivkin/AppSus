@@ -1,7 +1,7 @@
 import {storageService} from '../../../general-service/async-storage-service.js'
 
 
-export const NotesService = {
+export const notesService = {
     getById,
     query,
     remove,

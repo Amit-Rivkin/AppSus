@@ -1,5 +1,4 @@
-import { NotesService } from "../services/keep-service.js"
-import noteTools from "./note-tools.cmp.js"
+
 
 export default {
     props: ['note'],
@@ -27,11 +26,11 @@ export default {
     methods: {
       changeBgColor() {
         this.note.style.backgroundColor = this.color
-        NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
       },
       saveTxt(){
        this.note.info.txt = this.txt
-        NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
         
       },
       
@@ -41,7 +40,7 @@ export default {
     computed: {
       },
       components:{
-        noteTools
+        
       }
     }
   

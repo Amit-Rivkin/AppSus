@@ -1,4 +1,4 @@
-import { NotesService } from '../services/keep-service.js'
+import { notesService } from '../services/keep-service.js'
 
 export default {
     template: `
@@ -31,26 +31,26 @@ export default {
             if (this.note==='') return
             let newCmp;
             if (this.type === 'noteTxt') {
-                newCmp = NotesService.getEmptyText()
+                newCmp = notesService.getEmptyText()
                 newCmp.info.txt = this.note
             }
             if (this.type === 'noteImg') {
-                newCmp = NotesService.getEmptyImg()
+                newCmp = notesService.getEmptyImg()
                 newCmp.info.url = this.note
                 newCmp.info.title = this.title
             }
             if (this.type === 'noteTodos') {
-                newCmp = NotesService.getEmptyTodo()
+                newCmp = notesService.getEmptyTodo()
                 newCmp.info.todos[0].txt = this.note
                 newCmp.info.label = this.title
             }
             if (this.type === 'noteVideo') {
-                newCmp = NotesService.getEmptyVideo()
+                newCmp = notesService.getEmptyVideo()
                 newCmp.info.url = this.note
                 newCmp.info.title = this.title
             }
              
-            NotesService.save(newCmp).then(()=>{
+            notesService.save(newCmp).then(()=>{
                 this.title=''
                 this.note = ''
                 this.$emit('addCmp', newCmp)

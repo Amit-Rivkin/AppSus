@@ -1,5 +1,4 @@
 
-import { NotesService } from "../services/keep-service.js"
 
 export default {
   props: ['note'],
@@ -32,11 +31,11 @@ export default {
   methods: {
     markTodo(todo) {
       todo.doneAt = todo.doneAt ? null : Date.now()
-      NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
     },
     removeTodo(todoIdx) {
       this.note.info.todos.splice(todoIdx, 1)
-      NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
     },
     setMarked(todo) {
       return {
@@ -47,15 +46,15 @@ export default {
     addTodo(todo) {
       todo.push({ txt: this.todoTxt, doneAt: null })
       this.todoTxt = ''
-      NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
     },
     changeBgColor() {
       this.note.style.backgroundColor = this.color
-      NotesService.save(this.note)
+        this.$emit('saveNote', this.note)
     },
     saveLabel() {
       this.note.info.label = this.label 
-       NotesService.save(this.note)
+         this.$emit('saveNote', this.note)
      },
   },
   

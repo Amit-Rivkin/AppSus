@@ -1,4 +1,3 @@
-import { NotesService } from "../services/keep-service.js"
 
 export default {
     props: ['note'],
@@ -24,11 +23,11 @@ export default {
     methods: {
         changeBgColor() {
             this.note.style.backgroundColor = this.color
-            NotesService.save(this.note)
+             this.$emit('saveNote', this.note)
           },
           savetitle() {
             this.note.info.title = this.title 
-             NotesService.save(this.note)
+              this.$emit('saveNote', this.note)
            },
     },
     computed: {
